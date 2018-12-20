@@ -1,6 +1,4 @@
 ﻿
-begin;
-
 drop schema "public" cascade;
 
 create schema "public";
@@ -120,5 +118,3 @@ create view "public"."db_columns" as
         AND (n.nspname != 'information_schema' AND n.nspname NOT LIKE 'pg_%')
         and not (n.nspname = 'public' and t.viewname = 'db_columns')
   )) ORDER BY TableSchema, IsViewColumn, TableName, ColumnName;
-
-commit;
