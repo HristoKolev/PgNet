@@ -171,7 +171,7 @@ namespace PgNet.Tests
                     var value1 = getter(instance1);
                     var value2 = getter(instance2);
 
-                    if (this.StupidEquals(value1, value2))
+                    if (DbCodeGenerator.StupidEquals(value1, value2))
                     {
                         Assert.DoesNotContain(column.ColumnName, columnNames);
                     }
@@ -532,7 +532,7 @@ namespace PgNet.Tests
                     var value1 = getter(instance1);
                     var value2 = getter(instance2);
 
-                    if (this.StupidEquals(value1, value2))
+                    if (DbCodeGenerator.StupidEquals(value1, value2))
                     {
                         Assert.DoesNotContain(column.ColumnName, columnNames);
                     }
