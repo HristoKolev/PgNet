@@ -40,10 +40,5 @@
             this.Db.Connection.Dispose();
             this.Db.Dispose();
         }
-
-        protected bool StupidEquals(object a, object b)
-        {
-            return a != null && (a.GetType().IsValueType || a is string) ? Equals(a, b) : ReferenceEquals(a, b);
-        }
     }
 }
