@@ -1227,6 +1227,18 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.NotEqual, "TestBigint1", NpgsqlDbType.Bigint, "test_bigint1")]
         public long? TestBigint1_NotEqual { get; set; }
 
+        [FilterOperator(QueryOperatorType.LessThan, "TestBigint1", NpgsqlDbType.Bigint, "test_bigint1")]
+        public long? TestBigint1_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestBigint1", NpgsqlDbType.Bigint, "test_bigint1")]
+        public long? TestBigint1_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestBigint1", NpgsqlDbType.Bigint, "test_bigint1")]
+        public long? TestBigint1_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestBigint1", NpgsqlDbType.Bigint, "test_bigint1")]
+        public long? TestBigint1_GreaterThanOrEqual { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestBigint1", NpgsqlDbType.Bigint, "test_bigint1")]
         public bool? TestBigint1_IsNull { get; set; }
 
@@ -1389,6 +1401,18 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.NotEqual, "TestDate2", NpgsqlDbType.Date, "test_date2")]
         public DateTime? TestDate2_NotEqual { get; set; }
 
+        [FilterOperator(QueryOperatorType.LessThan, "TestDate2", NpgsqlDbType.Date, "test_date2")]
+        public DateTime? TestDate2_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestDate2", NpgsqlDbType.Date, "test_date2")]
+        public DateTime? TestDate2_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestDate2", NpgsqlDbType.Date, "test_date2")]
+        public DateTime? TestDate2_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestDate2", NpgsqlDbType.Date, "test_date2")]
+        public DateTime? TestDate2_GreaterThanOrEqual { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestDate2", NpgsqlDbType.Date, "test_date2")]
         public bool? TestDate2_IsNull { get; set; }
 
@@ -1406,6 +1430,18 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.NotEqual, "TestDouble1", NpgsqlDbType.Double, "test_double1")]
         public double? TestDouble1_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "TestDouble1", NpgsqlDbType.Double, "test_double1")]
+        public double? TestDouble1_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestDouble1", NpgsqlDbType.Double, "test_double1")]
+        public double? TestDouble1_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestDouble1", NpgsqlDbType.Double, "test_double1")]
+        public double? TestDouble1_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestDouble1", NpgsqlDbType.Double, "test_double1")]
+        public double? TestDouble1_GreaterThanOrEqual { get; set; }
 
         [FilterOperator(QueryOperatorType.IsNull, "TestDouble1", NpgsqlDbType.Double, "test_double1")]
         public bool? TestDouble1_IsNull { get; set; }
@@ -1472,6 +1508,18 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.NotEqual, "TestInteger1", NpgsqlDbType.Integer, "test_integer1")]
         public int? TestInteger1_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "TestInteger1", NpgsqlDbType.Integer, "test_integer1")]
+        public int? TestInteger1_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestInteger1", NpgsqlDbType.Integer, "test_integer1")]
+        public int? TestInteger1_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestInteger1", NpgsqlDbType.Integer, "test_integer1")]
+        public int? TestInteger1_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestInteger1", NpgsqlDbType.Integer, "test_integer1")]
+        public int? TestInteger1_GreaterThanOrEqual { get; set; }
 
         [FilterOperator(QueryOperatorType.IsNull, "TestInteger1", NpgsqlDbType.Integer, "test_integer1")]
         public bool? TestInteger1_IsNull { get; set; }
@@ -1580,6 +1628,18 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.NotEqual, "TestReal1", NpgsqlDbType.Real, "test_real1")]
         public float? TestReal1_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "TestReal1", NpgsqlDbType.Real, "test_real1")]
+        public float? TestReal1_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestReal1", NpgsqlDbType.Real, "test_real1")]
+        public float? TestReal1_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestReal1", NpgsqlDbType.Real, "test_real1")]
+        public float? TestReal1_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestReal1", NpgsqlDbType.Real, "test_real1")]
+        public float? TestReal1_GreaterThanOrEqual { get; set; }
 
         [FilterOperator(QueryOperatorType.IsNull, "TestReal1", NpgsqlDbType.Real, "test_real1")]
         public bool? TestReal1_IsNull { get; set; }
@@ -1713,6 +1773,18 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.NotEqual, "TestTimestamp2", NpgsqlDbType.Timestamp, "test_timestamp2")]
         public DateTime? TestTimestamp2_NotEqual { get; set; }
 
+        [FilterOperator(QueryOperatorType.LessThan, "TestTimestamp2", NpgsqlDbType.Timestamp, "test_timestamp2")]
+        public DateTime? TestTimestamp2_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestTimestamp2", NpgsqlDbType.Timestamp, "test_timestamp2")]
+        public DateTime? TestTimestamp2_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestTimestamp2", NpgsqlDbType.Timestamp, "test_timestamp2")]
+        public DateTime? TestTimestamp2_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestTimestamp2", NpgsqlDbType.Timestamp, "test_timestamp2")]
+        public DateTime? TestTimestamp2_GreaterThanOrEqual { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestTimestamp2", NpgsqlDbType.Timestamp, "test_timestamp2")]
         public bool? TestTimestamp2_IsNull { get; set; }
 
@@ -1825,6 +1897,18 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.NotEqual, "TestBigint1", NpgsqlDbType.Bigint, "test_bigint1")]
         public long? TestBigint1_NotEqual { get; set; }
 
+        [FilterOperator(QueryOperatorType.LessThan, "TestBigint1", NpgsqlDbType.Bigint, "test_bigint1")]
+        public long? TestBigint1_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestBigint1", NpgsqlDbType.Bigint, "test_bigint1")]
+        public long? TestBigint1_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestBigint1", NpgsqlDbType.Bigint, "test_bigint1")]
+        public long? TestBigint1_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestBigint1", NpgsqlDbType.Bigint, "test_bigint1")]
+        public long? TestBigint1_GreaterThanOrEqual { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestBigint1", NpgsqlDbType.Bigint, "test_bigint1")]
         public bool? TestBigint1_IsNull { get; set; }
 
@@ -1842,6 +1926,18 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.NotEqual, "TestBigint2", NpgsqlDbType.Bigint, "test_bigint2")]
         public long? TestBigint2_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "TestBigint2", NpgsqlDbType.Bigint, "test_bigint2")]
+        public long? TestBigint2_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestBigint2", NpgsqlDbType.Bigint, "test_bigint2")]
+        public long? TestBigint2_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestBigint2", NpgsqlDbType.Bigint, "test_bigint2")]
+        public long? TestBigint2_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestBigint2", NpgsqlDbType.Bigint, "test_bigint2")]
+        public long? TestBigint2_GreaterThanOrEqual { get; set; }
 
         [FilterOperator(QueryOperatorType.IsNull, "TestBigint2", NpgsqlDbType.Bigint, "test_bigint2")]
         public bool? TestBigint2_IsNull { get; set; }
@@ -1969,6 +2065,18 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.NotEqual, "TestDate", NpgsqlDbType.Timestamp, "test_date")]
         public DateTime? TestDate_NotEqual { get; set; }
 
+        [FilterOperator(QueryOperatorType.LessThan, "TestDate", NpgsqlDbType.Timestamp, "test_date")]
+        public DateTime? TestDate_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestDate", NpgsqlDbType.Timestamp, "test_date")]
+        public DateTime? TestDate_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestDate", NpgsqlDbType.Timestamp, "test_date")]
+        public DateTime? TestDate_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestDate", NpgsqlDbType.Timestamp, "test_date")]
+        public DateTime? TestDate_GreaterThanOrEqual { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestDate", NpgsqlDbType.Timestamp, "test_date")]
         public bool? TestDate_IsNull { get; set; }
 
@@ -1986,6 +2094,18 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.NotEqual, "TestDate1", NpgsqlDbType.Date, "test_date1")]
         public DateTime? TestDate1_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "TestDate1", NpgsqlDbType.Date, "test_date1")]
+        public DateTime? TestDate1_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestDate1", NpgsqlDbType.Date, "test_date1")]
+        public DateTime? TestDate1_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestDate1", NpgsqlDbType.Date, "test_date1")]
+        public DateTime? TestDate1_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestDate1", NpgsqlDbType.Date, "test_date1")]
+        public DateTime? TestDate1_GreaterThanOrEqual { get; set; }
 
         [FilterOperator(QueryOperatorType.IsNull, "TestDate1", NpgsqlDbType.Date, "test_date1")]
         public bool? TestDate1_IsNull { get; set; }
@@ -2005,6 +2125,18 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.NotEqual, "TestDate2", NpgsqlDbType.Date, "test_date2")]
         public DateTime? TestDate2_NotEqual { get; set; }
 
+        [FilterOperator(QueryOperatorType.LessThan, "TestDate2", NpgsqlDbType.Date, "test_date2")]
+        public DateTime? TestDate2_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestDate2", NpgsqlDbType.Date, "test_date2")]
+        public DateTime? TestDate2_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestDate2", NpgsqlDbType.Date, "test_date2")]
+        public DateTime? TestDate2_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestDate2", NpgsqlDbType.Date, "test_date2")]
+        public DateTime? TestDate2_GreaterThanOrEqual { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestDate2", NpgsqlDbType.Date, "test_date2")]
         public bool? TestDate2_IsNull { get; set; }
 
@@ -2022,6 +2154,18 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.NotEqual, "TestDouble1", NpgsqlDbType.Double, "test_double1")]
         public double? TestDouble1_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "TestDouble1", NpgsqlDbType.Double, "test_double1")]
+        public double? TestDouble1_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestDouble1", NpgsqlDbType.Double, "test_double1")]
+        public double? TestDouble1_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestDouble1", NpgsqlDbType.Double, "test_double1")]
+        public double? TestDouble1_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestDouble1", NpgsqlDbType.Double, "test_double1")]
+        public double? TestDouble1_GreaterThanOrEqual { get; set; }
 
         [FilterOperator(QueryOperatorType.IsNull, "TestDouble1", NpgsqlDbType.Double, "test_double1")]
         public bool? TestDouble1_IsNull { get; set; }
@@ -2041,6 +2185,18 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.NotEqual, "TestDouble2", NpgsqlDbType.Double, "test_double2")]
         public double? TestDouble2_NotEqual { get; set; }
 
+        [FilterOperator(QueryOperatorType.LessThan, "TestDouble2", NpgsqlDbType.Double, "test_double2")]
+        public double? TestDouble2_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestDouble2", NpgsqlDbType.Double, "test_double2")]
+        public double? TestDouble2_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestDouble2", NpgsqlDbType.Double, "test_double2")]
+        public double? TestDouble2_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestDouble2", NpgsqlDbType.Double, "test_double2")]
+        public double? TestDouble2_GreaterThanOrEqual { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestDouble2", NpgsqlDbType.Double, "test_double2")]
         public bool? TestDouble2_IsNull { get; set; }
 
@@ -2059,6 +2215,18 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.NotEqual, "TestInteger1", NpgsqlDbType.Integer, "test_integer1")]
         public int? TestInteger1_NotEqual { get; set; }
 
+        [FilterOperator(QueryOperatorType.LessThan, "TestInteger1", NpgsqlDbType.Integer, "test_integer1")]
+        public int? TestInteger1_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestInteger1", NpgsqlDbType.Integer, "test_integer1")]
+        public int? TestInteger1_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestInteger1", NpgsqlDbType.Integer, "test_integer1")]
+        public int? TestInteger1_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestInteger1", NpgsqlDbType.Integer, "test_integer1")]
+        public int? TestInteger1_GreaterThanOrEqual { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestInteger1", NpgsqlDbType.Integer, "test_integer1")]
         public bool? TestInteger1_IsNull { get; set; }
 
@@ -2076,6 +2244,18 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.NotEqual, "TestInteger2", NpgsqlDbType.Integer, "test_integer2")]
         public int? TestInteger2_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "TestInteger2", NpgsqlDbType.Integer, "test_integer2")]
+        public int? TestInteger2_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestInteger2", NpgsqlDbType.Integer, "test_integer2")]
+        public int? TestInteger2_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestInteger2", NpgsqlDbType.Integer, "test_integer2")]
+        public int? TestInteger2_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestInteger2", NpgsqlDbType.Integer, "test_integer2")]
+        public int? TestInteger2_GreaterThanOrEqual { get; set; }
 
         [FilterOperator(QueryOperatorType.IsNull, "TestInteger2", NpgsqlDbType.Integer, "test_integer2")]
         public bool? TestInteger2_IsNull { get; set; }
@@ -2203,6 +2383,18 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.NotEqual, "TestReal1", NpgsqlDbType.Real, "test_real1")]
         public float? TestReal1_NotEqual { get; set; }
 
+        [FilterOperator(QueryOperatorType.LessThan, "TestReal1", NpgsqlDbType.Real, "test_real1")]
+        public float? TestReal1_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestReal1", NpgsqlDbType.Real, "test_real1")]
+        public float? TestReal1_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestReal1", NpgsqlDbType.Real, "test_real1")]
+        public float? TestReal1_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestReal1", NpgsqlDbType.Real, "test_real1")]
+        public float? TestReal1_GreaterThanOrEqual { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestReal1", NpgsqlDbType.Real, "test_real1")]
         public bool? TestReal1_IsNull { get; set; }
 
@@ -2220,6 +2412,18 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.NotEqual, "TestReal2", NpgsqlDbType.Real, "test_real2")]
         public float? TestReal2_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "TestReal2", NpgsqlDbType.Real, "test_real2")]
+        public float? TestReal2_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestReal2", NpgsqlDbType.Real, "test_real2")]
+        public float? TestReal2_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestReal2", NpgsqlDbType.Real, "test_real2")]
+        public float? TestReal2_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestReal2", NpgsqlDbType.Real, "test_real2")]
+        public float? TestReal2_GreaterThanOrEqual { get; set; }
 
         [FilterOperator(QueryOperatorType.IsNull, "TestReal2", NpgsqlDbType.Real, "test_real2")]
         public bool? TestReal2_IsNull { get; set; }
@@ -2311,6 +2515,18 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.NotEqual, "TestTimestamp1", NpgsqlDbType.Timestamp, "test_timestamp1")]
         public DateTime? TestTimestamp1_NotEqual { get; set; }
 
+        [FilterOperator(QueryOperatorType.LessThan, "TestTimestamp1", NpgsqlDbType.Timestamp, "test_timestamp1")]
+        public DateTime? TestTimestamp1_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestTimestamp1", NpgsqlDbType.Timestamp, "test_timestamp1")]
+        public DateTime? TestTimestamp1_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestTimestamp1", NpgsqlDbType.Timestamp, "test_timestamp1")]
+        public DateTime? TestTimestamp1_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestTimestamp1", NpgsqlDbType.Timestamp, "test_timestamp1")]
+        public DateTime? TestTimestamp1_GreaterThanOrEqual { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestTimestamp1", NpgsqlDbType.Timestamp, "test_timestamp1")]
         public bool? TestTimestamp1_IsNull { get; set; }
 
@@ -2328,6 +2544,18 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.NotEqual, "TestTimestamp2", NpgsqlDbType.Timestamp, "test_timestamp2")]
         public DateTime? TestTimestamp2_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "TestTimestamp2", NpgsqlDbType.Timestamp, "test_timestamp2")]
+        public DateTime? TestTimestamp2_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestTimestamp2", NpgsqlDbType.Timestamp, "test_timestamp2")]
+        public DateTime? TestTimestamp2_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestTimestamp2", NpgsqlDbType.Timestamp, "test_timestamp2")]
+        public DateTime? TestTimestamp2_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestTimestamp2", NpgsqlDbType.Timestamp, "test_timestamp2")]
+        public DateTime? TestTimestamp2_GreaterThanOrEqual { get; set; }
 
         [FilterOperator(QueryOperatorType.IsNull, "TestTimestamp2", NpgsqlDbType.Timestamp, "test_timestamp2")]
         public bool? TestTimestamp2_IsNull { get; set; }

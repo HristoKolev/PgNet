@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-connectionString="Server=vm5.lan;Port=4202;Database=test;Uid=test;Pwd=test;";
+connectionString="Server=dev-host.lan;Port=4202;Database=test;Uid=test;Pwd=test123;";
 namespace="PgNet.Tests";
 pocoClassName="TestDbPocos";
 metadataClassName="TestDbMetadata";
