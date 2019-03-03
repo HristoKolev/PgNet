@@ -199,13 +199,6 @@ namespace @Model.Namespace
         @:}
 @:
     }
-        @:[Theory]
-        @:[ClassData(typeof(GeneratedFilterData<@(table.ClassName)Poco, @(table.ClassName)FM>))]
-        @:public async Task FilterSql(@(table.ClassName)FM filter)
-        @:{
-            @:await this.Db.FilterInternal<@(table.ClassName)Poco, @(table.ClassName)CM>(filter);
-        @:}
-@:
         @:[Fact]
         @:public async Task SelectCmDry()
         @:{

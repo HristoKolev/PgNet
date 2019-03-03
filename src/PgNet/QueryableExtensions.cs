@@ -149,6 +149,9 @@
         private static readonly MethodInfo StringEndsWithMethod = typeof(string).GetMethod(nameof(string.EndsWith), new[] { typeof(string) });
 
         private static readonly MethodInfo StringContainsMethod = typeof(string).GetMethod(nameof(string.Contains), new[] { typeof(string) });
+        
+        private static readonly MethodInfo StringToLowerMethod = typeof(string)
+            .GetMethod(nameof(string.ToLower), Array.Empty<Type>());
 
         private static readonly MethodInfo EnumerableContainsMethod = typeof(Enumerable)
                                                                       .GetMethods()
@@ -257,22 +260,92 @@
                 }
                 case QueryOperatorType.StartsWith :
                 {
-                    expression = Expression.Call(member, StringStartsWithMethod, memberValue);
+                    expression = Expression.Call(
+                        Expression.Call(member, StringToLowerMethod), 
+                        StringStartsWithMethod, 
+                        Expression.Call(memberValue, StringToLowerMethod)
+                    );
                     break;
                 }
-                case QueryOperatorType.DoesNotStartWith :
+                case QueryOperatorType.DoesNotStartWith:
                 {
-                    expression = Expression.Not(Expression.Call(member, StringStartsWithMethod, memberValue));
+                    expression = Expression.Not(
+                        Expression.Call(
+                            Expression.Call(member, StringToLowerMethod), 
+                            StringStartsWithMethod, 
+                            Expression.Call(memberValue, StringToLowerMethod)
+                        )
+                    );
                     break;
                 }
                 case QueryOperatorType.EndsWith :
                 {
-                    expression = Expression.Call(member, StringEndsWithMethod, memberValue);
+                    expression = Expression.Call(
+                        Expression.Call(member, StringToLowerMethod), 
+                        StringEndsWithMethod, 
+                        Expression.Call(memberValue, StringToLowerMethod)
+                    );
                     break;
                 }
                 case QueryOperatorType.DoesNotEndWith :
                 {
+                    expression = Expression.Not(
+                        Expression.Call(
+                            Expression.Call(member, StringToLowerMethod), 
+                            StringEndsWithMethod, 
+                            Expression.Call(memberValue, StringToLowerMethod)
+                        )
+                    );
+                    break;
+                }
+                case QueryOperatorType.Contains :
+                {
+                    expression = Expression.Call(
+                        Expression.Call(member, StringToLowerMethod), 
+                        StringContainsMethod, 
+                        Expression.Call(memberValue, StringToLowerMethod)
+                    );
+                    break;
+                }
+                case QueryOperatorType.DoesNotContain :
+                {
+                    expression = Expression.Not(
+                        Expression.Call(
+                            Expression.Call(member, StringToLowerMethod),
+                            StringContainsMethod,
+                            Expression.Call(memberValue, StringToLowerMethod)
+                        )
+                    );
+                    break;
+                }
+                case QueryOperatorType.StartsWithCaseSensitive :
+                {
+                    expression = Expression.Call(member, StringStartsWithMethod, memberValue);
+                    break;
+                }
+                case QueryOperatorType.DoesNotStartWithCaseSensitive :
+                {
+                    expression = Expression.Not(Expression.Call(member, StringStartsWithMethod, memberValue));
+                    break;
+                }
+                case QueryOperatorType.EndsWithCaseSensitive :
+                {
+                    expression = Expression.Call(member, StringEndsWithMethod, memberValue);
+                    break;
+                }
+                case QueryOperatorType.DoesNotEndWithCaseSensitive :
+                {
                     expression = Expression.Not(Expression.Call(member, StringEndsWithMethod, memberValue));
+                    break;
+                }
+                case QueryOperatorType.ContainsCaseSensitive :
+                {
+                    expression = Expression.Call(member, StringContainsMethod, memberValue);
+                    break;
+                }
+                case QueryOperatorType.DoesNotContainCaseSensitive :
+                {
+                    expression = Expression.Not(Expression.Call(member, StringContainsMethod, memberValue));
                     break;
                 }
                 case QueryOperatorType.IsIn :
@@ -309,16 +382,6 @@
                     }
 
                     expression = Expression.Not(Expression.Call(null, method, memberValue, member));
-                    break;
-                }
-                case QueryOperatorType.Contains :
-                {
-                    expression = Expression.Call(member, StringContainsMethod, memberValue);
-                    break;
-                }
-                case QueryOperatorType.DoesNotContain :
-                {
-                    expression = Expression.Not(Expression.Call(member, StringContainsMethod, memberValue));
                     break;
                 }
                 case QueryOperatorType.IsNull :

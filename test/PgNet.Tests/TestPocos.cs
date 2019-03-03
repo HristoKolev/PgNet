@@ -121,6 +121,32 @@ namespace PgNet.Tests
         public DateTime? TestDate2 { get; set; }
 
         /// <summary>
+        /// <para>Column name: 'test_decimal1'.</para>
+        /// <para>Table name: 'test1'.</para>
+        /// <para>This column is nullable.</para>
+        /// <para>PostgreSQL data type: 'numeric'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Numeric'.</para>
+        /// <para>CLR type: 'decimal?'.</para>
+        /// <para>linq2db data type: 'DataType.Decimal'.</para>
+        /// </summary>
+        [Nullable]
+        [Column(Name = "test_decimal1", DataType = DataType.Decimal)]
+        public decimal? TestDecimal1 { get; set; }
+
+        /// <summary>
+        /// <para>Column name: 'test_decimal2'.</para>
+        /// <para>Table name: 'test1'.</para>
+        /// <para>This column is not nullable.</para>
+        /// <para>PostgreSQL data type: 'numeric'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Numeric'.</para>
+        /// <para>CLR type: 'decimal'.</para>
+        /// <para>linq2db data type: 'DataType.Decimal'.</para>
+        /// </summary>
+        [NotNull]
+        [Column(Name = "test_decimal2", DataType = DataType.Decimal)]
+        public decimal TestDecimal2 { get; set; }
+
+        /// <summary>
         /// <para>Column name: 'test_double1'.</para>
         /// <para>Table name: 'test1'.</para>
         /// <para>This column is nullable.</para>
@@ -305,6 +331,8 @@ namespace PgNet.Tests
                 TestChar2 = this.TestChar2,
                 TestDate1 = this.TestDate1,
                 TestDate2 = this.TestDate2,
+                TestDecimal1 = this.TestDecimal1,
+                TestDecimal2 = this.TestDecimal2,
                 TestDouble1 = this.TestDouble1,
                 TestDouble2 = this.TestDouble2,
                 TestID = this.TestID,
@@ -390,6 +418,32 @@ namespace PgNet.Tests
     [Table(Schema="public", Name = "view1")]
     public class View1Poco : IReadOnlyPoco<View1Poco>
     {
+        /// <summary>
+        /// <para>Column name: 'test1_test_id'.</para>
+        /// <para>Table name: 'view1'.</para>
+        /// <para>This column is nullable.</para>
+        /// <para>PostgreSQL data type: 'integer'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Integer'.</para>
+        /// <para>CLR type: 'int?'.</para>
+        /// <para>linq2db data type: 'DataType.Int32'.</para>
+        /// </summary>
+        [Nullable]
+        [Column(Name = "test1_test_id", DataType = DataType.Int32)]
+        public int? Test1TestID { get; set; }
+
+        /// <summary>
+        /// <para>Column name: 'test2_test_id'.</para>
+        /// <para>Table name: 'view1'.</para>
+        /// <para>This column is nullable.</para>
+        /// <para>PostgreSQL data type: 'integer'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Integer'.</para>
+        /// <para>CLR type: 'int?'.</para>
+        /// <para>linq2db data type: 'DataType.Int32'.</para>
+        /// </summary>
+        [Nullable]
+        [Column(Name = "test2_test_id", DataType = DataType.Int32)]
+        public int? Test2TestID { get; set; }
+
         /// <summary>
         /// <para>Column name: 'test_bigint1'.</para>
         /// <para>Table name: 'view1'.</para>
@@ -506,6 +560,32 @@ namespace PgNet.Tests
         [Nullable]
         [Column(Name = "test_date2", DataType = DataType.Date)]
         public DateTime? TestDate2 { get; set; }
+
+        /// <summary>
+        /// <para>Column name: 'test_decimal1'.</para>
+        /// <para>Table name: 'view1'.</para>
+        /// <para>This column is nullable.</para>
+        /// <para>PostgreSQL data type: 'numeric'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Numeric'.</para>
+        /// <para>CLR type: 'decimal?'.</para>
+        /// <para>linq2db data type: 'DataType.Decimal'.</para>
+        /// </summary>
+        [Nullable]
+        [Column(Name = "test_decimal1", DataType = DataType.Decimal)]
+        public decimal? TestDecimal1 { get; set; }
+
+        /// <summary>
+        /// <para>Column name: 'test_decimal2'.</para>
+        /// <para>Table name: 'view1'.</para>
+        /// <para>This column is nullable.</para>
+        /// <para>PostgreSQL data type: 'numeric'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Numeric'.</para>
+        /// <para>CLR type: 'decimal?'.</para>
+        /// <para>linq2db data type: 'DataType.Decimal'.</para>
+        /// </summary>
+        [Nullable]
+        [Column(Name = "test_decimal2", DataType = DataType.Decimal)]
+        public decimal? TestDecimal2 { get; set; }
 
         /// <summary>
         /// <para>Column name: 'test_double1'.</para>
@@ -776,6 +856,28 @@ namespace PgNet.Tests
         public DateTime? TestDate2 { get; set; }
 
         /// <summary>
+        /// <para>Column name: 'test_decimal1'.</para>
+        /// <para>Table name: 'test1'.</para>
+        /// <para>This column is nullable.</para>
+        /// <para>PostgreSQL data type: 'numeric'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Numeric'.</para>
+        /// <para>CLR type: 'decimal?'.</para>
+        /// <para>linq2db data type: 'DataType.Decimal'.</para>
+        /// </summary>
+        public decimal? TestDecimal1 { get; set; }
+
+        /// <summary>
+        /// <para>Column name: 'test_decimal2'.</para>
+        /// <para>Table name: 'test1'.</para>
+        /// <para>This column is not nullable.</para>
+        /// <para>PostgreSQL data type: 'numeric'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Numeric'.</para>
+        /// <para>CLR type: 'decimal'.</para>
+        /// <para>linq2db data type: 'DataType.Decimal'.</para>
+        /// </summary>
+        public decimal TestDecimal2 { get; set; }
+
+        /// <summary>
         /// <para>Column name: 'test_double1'.</para>
         /// <para>Table name: 'test1'.</para>
         /// <para>This column is nullable.</para>
@@ -972,6 +1074,28 @@ namespace PgNet.Tests
     public class View1CM : ICatalogModel<View1Poco>
     {
         /// <summary>
+        /// <para>Column name: 'test1_test_id'.</para>
+        /// <para>Table name: 'view1'.</para>
+        /// <para>This column is nullable.</para>
+        /// <para>PostgreSQL data type: 'integer'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Integer'.</para>
+        /// <para>CLR type: 'int?'.</para>
+        /// <para>linq2db data type: 'DataType.Int32'.</para>
+        /// </summary>
+        public int? Test1TestID { get; set; }
+
+        /// <summary>
+        /// <para>Column name: 'test2_test_id'.</para>
+        /// <para>Table name: 'view1'.</para>
+        /// <para>This column is nullable.</para>
+        /// <para>PostgreSQL data type: 'integer'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Integer'.</para>
+        /// <para>CLR type: 'int?'.</para>
+        /// <para>linq2db data type: 'DataType.Int32'.</para>
+        /// </summary>
+        public int? Test2TestID { get; set; }
+
+        /// <summary>
         /// <para>Column name: 'test_bigint1'.</para>
         /// <para>Table name: 'view1'.</para>
         /// <para>This column is nullable.</para>
@@ -1069,6 +1193,28 @@ namespace PgNet.Tests
         /// <para>linq2db data type: 'DataType.Date'.</para>
         /// </summary>
         public DateTime? TestDate2 { get; set; }
+
+        /// <summary>
+        /// <para>Column name: 'test_decimal1'.</para>
+        /// <para>Table name: 'view1'.</para>
+        /// <para>This column is nullable.</para>
+        /// <para>PostgreSQL data type: 'numeric'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Numeric'.</para>
+        /// <para>CLR type: 'decimal?'.</para>
+        /// <para>linq2db data type: 'DataType.Decimal'.</para>
+        /// </summary>
+        public decimal? TestDecimal1 { get; set; }
+
+        /// <summary>
+        /// <para>Column name: 'test_decimal2'.</para>
+        /// <para>Table name: 'view1'.</para>
+        /// <para>This column is nullable.</para>
+        /// <para>PostgreSQL data type: 'numeric'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Numeric'.</para>
+        /// <para>CLR type: 'decimal?'.</para>
+        /// <para>linq2db data type: 'DataType.Decimal'.</para>
+        /// </summary>
+        public decimal? TestDecimal2 { get; set; }
 
         /// <summary>
         /// <para>Column name: 'test_double1'.</para>
@@ -1329,6 +1475,24 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.DoesNotContain, "TestChar1", NpgsqlDbType.Char, "test_char1")]
         public string TestChar1_DoesNotContain { get; set; }
 
+        [FilterOperator(QueryOperatorType.StartsWithCaseSensitive, "TestChar1", NpgsqlDbType.Char, "test_char1")]
+        public string TestChar1_StartsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotStartWithCaseSensitive, "TestChar1", NpgsqlDbType.Char, "test_char1")]
+        public string TestChar1_DoesNotStartWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.EndsWithCaseSensitive, "TestChar1", NpgsqlDbType.Char, "test_char1")]
+        public string TestChar1_EndsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotEndWithCaseSensitive, "TestChar1", NpgsqlDbType.Char, "test_char1")]
+        public string TestChar1_DoesNotEndWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.ContainsCaseSensitive, "TestChar1", NpgsqlDbType.Char, "test_char1")]
+        public string TestChar1_ContainsCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotContainCaseSensitive, "TestChar1", NpgsqlDbType.Char, "test_char1")]
+        public string TestChar1_DoesNotContainCaseSensitive { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestChar1", NpgsqlDbType.Char, "test_char1")]
         public bool? TestChar1_IsNull { get; set; }
 
@@ -1364,6 +1528,24 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.DoesNotContain, "TestChar2", NpgsqlDbType.Char, "test_char2")]
         public string TestChar2_DoesNotContain { get; set; }
+
+        [FilterOperator(QueryOperatorType.StartsWithCaseSensitive, "TestChar2", NpgsqlDbType.Char, "test_char2")]
+        public string TestChar2_StartsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotStartWithCaseSensitive, "TestChar2", NpgsqlDbType.Char, "test_char2")]
+        public string TestChar2_DoesNotStartWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.EndsWithCaseSensitive, "TestChar2", NpgsqlDbType.Char, "test_char2")]
+        public string TestChar2_EndsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotEndWithCaseSensitive, "TestChar2", NpgsqlDbType.Char, "test_char2")]
+        public string TestChar2_DoesNotEndWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.ContainsCaseSensitive, "TestChar2", NpgsqlDbType.Char, "test_char2")]
+        public string TestChar2_ContainsCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotContainCaseSensitive, "TestChar2", NpgsqlDbType.Char, "test_char2")]
+        public string TestChar2_DoesNotContainCaseSensitive { get; set; }
 
         [FilterOperator(QueryOperatorType.IsIn, "TestChar2", NpgsqlDbType.Char, "test_char2")]
         public string[] TestChar2_IsIn { get; set; }
@@ -1424,6 +1606,60 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.IsNotIn, "TestDate2", NpgsqlDbType.Date, "test_date2")]
         public DateTime[] TestDate2_IsNotIn { get; set; }
+
+        [FilterOperator(QueryOperatorType.Equal, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal? TestDecimal1 { get; set; }
+
+        [FilterOperator(QueryOperatorType.NotEqual, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal? TestDecimal1_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal? TestDecimal1_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal? TestDecimal1_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal? TestDecimal1_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal? TestDecimal1_GreaterThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNull, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public bool? TestDecimal1_IsNull { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNotNull, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public bool? TestDecimal1_IsNotNull { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsIn, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal[] TestDecimal1_IsIn { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNotIn, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal[] TestDecimal1_IsNotIn { get; set; }
+
+        [FilterOperator(QueryOperatorType.Equal, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal? TestDecimal2 { get; set; }
+
+        [FilterOperator(QueryOperatorType.NotEqual, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal? TestDecimal2_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal? TestDecimal2_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal? TestDecimal2_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal? TestDecimal2_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal? TestDecimal2_GreaterThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsIn, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal[] TestDecimal2_IsIn { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNotIn, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal[] TestDecimal2_IsNotIn { get; set; }
 
         [FilterOperator(QueryOperatorType.Equal, "TestDouble1", NpgsqlDbType.Double, "test_double1")]
         public double? TestDouble1 { get; set; }
@@ -1581,6 +1817,24 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.DoesNotContain, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
         public string TestName1_DoesNotContain { get; set; }
 
+        [FilterOperator(QueryOperatorType.StartsWithCaseSensitive, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
+        public string TestName1_StartsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotStartWithCaseSensitive, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
+        public string TestName1_DoesNotStartWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.EndsWithCaseSensitive, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
+        public string TestName1_EndsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotEndWithCaseSensitive, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
+        public string TestName1_DoesNotEndWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.ContainsCaseSensitive, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
+        public string TestName1_ContainsCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotContainCaseSensitive, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
+        public string TestName1_DoesNotContainCaseSensitive { get; set; }
+
         [FilterOperator(QueryOperatorType.IsIn, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
         public string[] TestName1_IsIn { get; set; }
 
@@ -1610,6 +1864,24 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.DoesNotContain, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
         public string TestName2_DoesNotContain { get; set; }
+
+        [FilterOperator(QueryOperatorType.StartsWithCaseSensitive, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
+        public string TestName2_StartsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotStartWithCaseSensitive, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
+        public string TestName2_DoesNotStartWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.EndsWithCaseSensitive, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
+        public string TestName2_EndsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotEndWithCaseSensitive, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
+        public string TestName2_DoesNotEndWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.ContainsCaseSensitive, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
+        public string TestName2_ContainsCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotContainCaseSensitive, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
+        public string TestName2_DoesNotContainCaseSensitive { get; set; }
 
         [FilterOperator(QueryOperatorType.IsNull, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
         public bool? TestName2_IsNull { get; set; }
@@ -1701,6 +1973,24 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.DoesNotContain, "TestText1", NpgsqlDbType.Text, "test_text1")]
         public string TestText1_DoesNotContain { get; set; }
 
+        [FilterOperator(QueryOperatorType.StartsWithCaseSensitive, "TestText1", NpgsqlDbType.Text, "test_text1")]
+        public string TestText1_StartsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotStartWithCaseSensitive, "TestText1", NpgsqlDbType.Text, "test_text1")]
+        public string TestText1_DoesNotStartWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.EndsWithCaseSensitive, "TestText1", NpgsqlDbType.Text, "test_text1")]
+        public string TestText1_EndsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotEndWithCaseSensitive, "TestText1", NpgsqlDbType.Text, "test_text1")]
+        public string TestText1_DoesNotEndWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.ContainsCaseSensitive, "TestText1", NpgsqlDbType.Text, "test_text1")]
+        public string TestText1_ContainsCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotContainCaseSensitive, "TestText1", NpgsqlDbType.Text, "test_text1")]
+        public string TestText1_DoesNotContainCaseSensitive { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestText1", NpgsqlDbType.Text, "test_text1")]
         public bool? TestText1_IsNull { get; set; }
 
@@ -1736,6 +2026,24 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.DoesNotContain, "TestText2", NpgsqlDbType.Text, "test_text2")]
         public string TestText2_DoesNotContain { get; set; }
+
+        [FilterOperator(QueryOperatorType.StartsWithCaseSensitive, "TestText2", NpgsqlDbType.Text, "test_text2")]
+        public string TestText2_StartsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotStartWithCaseSensitive, "TestText2", NpgsqlDbType.Text, "test_text2")]
+        public string TestText2_DoesNotStartWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.EndsWithCaseSensitive, "TestText2", NpgsqlDbType.Text, "test_text2")]
+        public string TestText2_EndsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotEndWithCaseSensitive, "TestText2", NpgsqlDbType.Text, "test_text2")]
+        public string TestText2_DoesNotEndWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.ContainsCaseSensitive, "TestText2", NpgsqlDbType.Text, "test_text2")]
+        public string TestText2_ContainsCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotContainCaseSensitive, "TestText2", NpgsqlDbType.Text, "test_text2")]
+        public string TestText2_DoesNotContainCaseSensitive { get; set; }
 
         [FilterOperator(QueryOperatorType.IsIn, "TestText2", NpgsqlDbType.Text, "test_text2")]
         public string[] TestText2_IsIn { get; set; }
@@ -1877,6 +2185,24 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.DoesNotContain, "TestName", NpgsqlDbType.Text, "test_name")]
         public string TestName_DoesNotContain { get; set; }
 
+        [FilterOperator(QueryOperatorType.StartsWithCaseSensitive, "TestName", NpgsqlDbType.Text, "test_name")]
+        public string TestName_StartsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotStartWithCaseSensitive, "TestName", NpgsqlDbType.Text, "test_name")]
+        public string TestName_DoesNotStartWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.EndsWithCaseSensitive, "TestName", NpgsqlDbType.Text, "test_name")]
+        public string TestName_EndsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotEndWithCaseSensitive, "TestName", NpgsqlDbType.Text, "test_name")]
+        public string TestName_DoesNotEndWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.ContainsCaseSensitive, "TestName", NpgsqlDbType.Text, "test_name")]
+        public string TestName_ContainsCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotContainCaseSensitive, "TestName", NpgsqlDbType.Text, "test_name")]
+        public string TestName_DoesNotContainCaseSensitive { get; set; }
+
         [FilterOperator(QueryOperatorType.IsIn, "TestName", NpgsqlDbType.Text, "test_name")]
         public string[] TestName_IsIn { get; set; }
 
@@ -1891,6 +2217,66 @@ namespace PgNet.Tests
     /// </summary>
     public class View1FM : IFilterModel<View1Poco>
     {
+        [FilterOperator(QueryOperatorType.Equal, "Test1TestID", NpgsqlDbType.Integer, "test1_test_id")]
+        public int? Test1TestID { get; set; }
+
+        [FilterOperator(QueryOperatorType.NotEqual, "Test1TestID", NpgsqlDbType.Integer, "test1_test_id")]
+        public int? Test1TestID_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "Test1TestID", NpgsqlDbType.Integer, "test1_test_id")]
+        public int? Test1TestID_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "Test1TestID", NpgsqlDbType.Integer, "test1_test_id")]
+        public int? Test1TestID_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "Test1TestID", NpgsqlDbType.Integer, "test1_test_id")]
+        public int? Test1TestID_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "Test1TestID", NpgsqlDbType.Integer, "test1_test_id")]
+        public int? Test1TestID_GreaterThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNull, "Test1TestID", NpgsqlDbType.Integer, "test1_test_id")]
+        public bool? Test1TestID_IsNull { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNotNull, "Test1TestID", NpgsqlDbType.Integer, "test1_test_id")]
+        public bool? Test1TestID_IsNotNull { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsIn, "Test1TestID", NpgsqlDbType.Integer, "test1_test_id")]
+        public int[] Test1TestID_IsIn { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNotIn, "Test1TestID", NpgsqlDbType.Integer, "test1_test_id")]
+        public int[] Test1TestID_IsNotIn { get; set; }
+
+        [FilterOperator(QueryOperatorType.Equal, "Test2TestID", NpgsqlDbType.Integer, "test2_test_id")]
+        public int? Test2TestID { get; set; }
+
+        [FilterOperator(QueryOperatorType.NotEqual, "Test2TestID", NpgsqlDbType.Integer, "test2_test_id")]
+        public int? Test2TestID_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "Test2TestID", NpgsqlDbType.Integer, "test2_test_id")]
+        public int? Test2TestID_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "Test2TestID", NpgsqlDbType.Integer, "test2_test_id")]
+        public int? Test2TestID_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "Test2TestID", NpgsqlDbType.Integer, "test2_test_id")]
+        public int? Test2TestID_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "Test2TestID", NpgsqlDbType.Integer, "test2_test_id")]
+        public int? Test2TestID_GreaterThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNull, "Test2TestID", NpgsqlDbType.Integer, "test2_test_id")]
+        public bool? Test2TestID_IsNull { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNotNull, "Test2TestID", NpgsqlDbType.Integer, "test2_test_id")]
+        public bool? Test2TestID_IsNotNull { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsIn, "Test2TestID", NpgsqlDbType.Integer, "test2_test_id")]
+        public int[] Test2TestID_IsIn { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNotIn, "Test2TestID", NpgsqlDbType.Integer, "test2_test_id")]
+        public int[] Test2TestID_IsNotIn { get; set; }
+
         [FilterOperator(QueryOperatorType.Equal, "TestBigint1", NpgsqlDbType.Bigint, "test_bigint1")]
         public long? TestBigint1 { get; set; }
 
@@ -2011,6 +2397,24 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.DoesNotContain, "TestChar1", NpgsqlDbType.Char, "test_char1")]
         public string TestChar1_DoesNotContain { get; set; }
 
+        [FilterOperator(QueryOperatorType.StartsWithCaseSensitive, "TestChar1", NpgsqlDbType.Char, "test_char1")]
+        public string TestChar1_StartsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotStartWithCaseSensitive, "TestChar1", NpgsqlDbType.Char, "test_char1")]
+        public string TestChar1_DoesNotStartWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.EndsWithCaseSensitive, "TestChar1", NpgsqlDbType.Char, "test_char1")]
+        public string TestChar1_EndsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotEndWithCaseSensitive, "TestChar1", NpgsqlDbType.Char, "test_char1")]
+        public string TestChar1_DoesNotEndWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.ContainsCaseSensitive, "TestChar1", NpgsqlDbType.Char, "test_char1")]
+        public string TestChar1_ContainsCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotContainCaseSensitive, "TestChar1", NpgsqlDbType.Char, "test_char1")]
+        public string TestChar1_DoesNotContainCaseSensitive { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestChar1", NpgsqlDbType.Char, "test_char1")]
         public bool? TestChar1_IsNull { get; set; }
 
@@ -2046,6 +2450,24 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.DoesNotContain, "TestChar2", NpgsqlDbType.Char, "test_char2")]
         public string TestChar2_DoesNotContain { get; set; }
+
+        [FilterOperator(QueryOperatorType.StartsWithCaseSensitive, "TestChar2", NpgsqlDbType.Char, "test_char2")]
+        public string TestChar2_StartsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotStartWithCaseSensitive, "TestChar2", NpgsqlDbType.Char, "test_char2")]
+        public string TestChar2_DoesNotStartWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.EndsWithCaseSensitive, "TestChar2", NpgsqlDbType.Char, "test_char2")]
+        public string TestChar2_EndsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotEndWithCaseSensitive, "TestChar2", NpgsqlDbType.Char, "test_char2")]
+        public string TestChar2_DoesNotEndWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.ContainsCaseSensitive, "TestChar2", NpgsqlDbType.Char, "test_char2")]
+        public string TestChar2_ContainsCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotContainCaseSensitive, "TestChar2", NpgsqlDbType.Char, "test_char2")]
+        public string TestChar2_DoesNotContainCaseSensitive { get; set; }
 
         [FilterOperator(QueryOperatorType.IsNull, "TestChar2", NpgsqlDbType.Char, "test_char2")]
         public bool? TestChar2_IsNull { get; set; }
@@ -2148,6 +2570,66 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.IsNotIn, "TestDate2", NpgsqlDbType.Date, "test_date2")]
         public DateTime[] TestDate2_IsNotIn { get; set; }
+
+        [FilterOperator(QueryOperatorType.Equal, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal? TestDecimal1 { get; set; }
+
+        [FilterOperator(QueryOperatorType.NotEqual, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal? TestDecimal1_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal? TestDecimal1_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal? TestDecimal1_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal? TestDecimal1_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal? TestDecimal1_GreaterThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNull, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public bool? TestDecimal1_IsNull { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNotNull, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public bool? TestDecimal1_IsNotNull { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsIn, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal[] TestDecimal1_IsIn { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNotIn, "TestDecimal1", NpgsqlDbType.Numeric, "test_decimal1")]
+        public decimal[] TestDecimal1_IsNotIn { get; set; }
+
+        [FilterOperator(QueryOperatorType.Equal, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal? TestDecimal2 { get; set; }
+
+        [FilterOperator(QueryOperatorType.NotEqual, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal? TestDecimal2_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal? TestDecimal2_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal? TestDecimal2_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal? TestDecimal2_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal? TestDecimal2_GreaterThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNull, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public bool? TestDecimal2_IsNull { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNotNull, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public bool? TestDecimal2_IsNotNull { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsIn, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal[] TestDecimal2_IsIn { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNotIn, "TestDecimal2", NpgsqlDbType.Numeric, "test_decimal2")]
+        public decimal[] TestDecimal2_IsNotIn { get; set; }
 
         [FilterOperator(QueryOperatorType.Equal, "TestDouble1", NpgsqlDbType.Double, "test_double1")]
         public double? TestDouble1 { get; set; }
@@ -2293,6 +2775,24 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.DoesNotContain, "TestName", NpgsqlDbType.Text, "test_name")]
         public string TestName_DoesNotContain { get; set; }
 
+        [FilterOperator(QueryOperatorType.StartsWithCaseSensitive, "TestName", NpgsqlDbType.Text, "test_name")]
+        public string TestName_StartsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotStartWithCaseSensitive, "TestName", NpgsqlDbType.Text, "test_name")]
+        public string TestName_DoesNotStartWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.EndsWithCaseSensitive, "TestName", NpgsqlDbType.Text, "test_name")]
+        public string TestName_EndsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotEndWithCaseSensitive, "TestName", NpgsqlDbType.Text, "test_name")]
+        public string TestName_DoesNotEndWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.ContainsCaseSensitive, "TestName", NpgsqlDbType.Text, "test_name")]
+        public string TestName_ContainsCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotContainCaseSensitive, "TestName", NpgsqlDbType.Text, "test_name")]
+        public string TestName_DoesNotContainCaseSensitive { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestName", NpgsqlDbType.Text, "test_name")]
         public bool? TestName_IsNull { get; set; }
 
@@ -2329,6 +2829,24 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.DoesNotContain, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
         public string TestName1_DoesNotContain { get; set; }
 
+        [FilterOperator(QueryOperatorType.StartsWithCaseSensitive, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
+        public string TestName1_StartsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotStartWithCaseSensitive, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
+        public string TestName1_DoesNotStartWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.EndsWithCaseSensitive, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
+        public string TestName1_EndsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotEndWithCaseSensitive, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
+        public string TestName1_DoesNotEndWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.ContainsCaseSensitive, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
+        public string TestName1_ContainsCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotContainCaseSensitive, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
+        public string TestName1_DoesNotContainCaseSensitive { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestName1", NpgsqlDbType.Varchar, "test_name1")]
         public bool? TestName1_IsNull { get; set; }
 
@@ -2364,6 +2882,24 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.DoesNotContain, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
         public string TestName2_DoesNotContain { get; set; }
+
+        [FilterOperator(QueryOperatorType.StartsWithCaseSensitive, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
+        public string TestName2_StartsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotStartWithCaseSensitive, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
+        public string TestName2_DoesNotStartWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.EndsWithCaseSensitive, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
+        public string TestName2_EndsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotEndWithCaseSensitive, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
+        public string TestName2_DoesNotEndWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.ContainsCaseSensitive, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
+        public string TestName2_ContainsCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotContainCaseSensitive, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
+        public string TestName2_DoesNotContainCaseSensitive { get; set; }
 
         [FilterOperator(QueryOperatorType.IsNull, "TestName2", NpgsqlDbType.Varchar, "test_name2")]
         public bool? TestName2_IsNull { get; set; }
@@ -2461,6 +2997,24 @@ namespace PgNet.Tests
         [FilterOperator(QueryOperatorType.DoesNotContain, "TestText1", NpgsqlDbType.Text, "test_text1")]
         public string TestText1_DoesNotContain { get; set; }
 
+        [FilterOperator(QueryOperatorType.StartsWithCaseSensitive, "TestText1", NpgsqlDbType.Text, "test_text1")]
+        public string TestText1_StartsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotStartWithCaseSensitive, "TestText1", NpgsqlDbType.Text, "test_text1")]
+        public string TestText1_DoesNotStartWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.EndsWithCaseSensitive, "TestText1", NpgsqlDbType.Text, "test_text1")]
+        public string TestText1_EndsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotEndWithCaseSensitive, "TestText1", NpgsqlDbType.Text, "test_text1")]
+        public string TestText1_DoesNotEndWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.ContainsCaseSensitive, "TestText1", NpgsqlDbType.Text, "test_text1")]
+        public string TestText1_ContainsCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotContainCaseSensitive, "TestText1", NpgsqlDbType.Text, "test_text1")]
+        public string TestText1_DoesNotContainCaseSensitive { get; set; }
+
         [FilterOperator(QueryOperatorType.IsNull, "TestText1", NpgsqlDbType.Text, "test_text1")]
         public bool? TestText1_IsNull { get; set; }
 
@@ -2496,6 +3050,24 @@ namespace PgNet.Tests
 
         [FilterOperator(QueryOperatorType.DoesNotContain, "TestText2", NpgsqlDbType.Text, "test_text2")]
         public string TestText2_DoesNotContain { get; set; }
+
+        [FilterOperator(QueryOperatorType.StartsWithCaseSensitive, "TestText2", NpgsqlDbType.Text, "test_text2")]
+        public string TestText2_StartsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotStartWithCaseSensitive, "TestText2", NpgsqlDbType.Text, "test_text2")]
+        public string TestText2_DoesNotStartWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.EndsWithCaseSensitive, "TestText2", NpgsqlDbType.Text, "test_text2")]
+        public string TestText2_EndsWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotEndWithCaseSensitive, "TestText2", NpgsqlDbType.Text, "test_text2")]
+        public string TestText2_DoesNotEndWithCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.ContainsCaseSensitive, "TestText2", NpgsqlDbType.Text, "test_text2")]
+        public string TestText2_ContainsCaseSensitive { get; set; }
+
+        [FilterOperator(QueryOperatorType.DoesNotContainCaseSensitive, "TestText2", NpgsqlDbType.Text, "test_text2")]
+        public string TestText2_DoesNotContainCaseSensitive { get; set; }
 
         [FilterOperator(QueryOperatorType.IsNull, "TestText2", NpgsqlDbType.Text, "test_text2")]
         public bool? TestText2_IsNull { get; set; }
@@ -2666,6 +3238,28 @@ namespace PgNet.Tests
         public DateTime? TestDate2 { get; set; }
 
         /// <summary>
+        /// <para>Column name: 'test_decimal1'.</para>
+        /// <para>Table name: 'test1'.</para>
+        /// <para>This column is nullable.</para>
+        /// <para>PostgreSQL data type: 'numeric'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Numeric'.</para>
+        /// <para>CLR type: 'decimal?'.</para>
+        /// <para>linq2db data type: 'DataType.Decimal'.</para>
+        /// </summary>
+        public decimal? TestDecimal1 { get; set; }
+
+        /// <summary>
+        /// <para>Column name: 'test_decimal2'.</para>
+        /// <para>Table name: 'test1'.</para>
+        /// <para>This column is not nullable.</para>
+        /// <para>PostgreSQL data type: 'numeric'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Numeric'.</para>
+        /// <para>CLR type: 'decimal'.</para>
+        /// <para>linq2db data type: 'DataType.Decimal'.</para>
+        /// </summary>
+        public decimal TestDecimal2 { get; set; }
+
+        /// <summary>
         /// <para>Column name: 'test_double1'.</para>
         /// <para>Table name: 'test1'.</para>
         /// <para>This column is nullable.</para>
@@ -2822,6 +3416,8 @@ namespace PgNet.Tests
                 TestChar2 = this.TestChar2,
                 TestDate1 = this.TestDate1,
                 TestDate2 = this.TestDate2,
+                TestDecimal1 = this.TestDecimal1,
+                TestDecimal2 = this.TestDecimal2,
                 TestDouble1 = this.TestDouble1,
                 TestDouble2 = this.TestDouble2,
                 TestID = this.TestID,
@@ -2896,41 +3492,20 @@ namespace PgNet.Tests
         /// <summary>
         /// <para>Database table 'test1'.</para>
         /// </summary>
-        public IQueryable<Test1Poco> Test1 => this.DbService.GetTable<Test1Poco>();
-
-        /// <summary>
-        /// <para>Database table 'test1'.</para>
-        /// <para>Filter model 'Test1FM'.</para>
-        /// <para>Catalog model 'Test1CM'.</para>
-        /// </summary>
-        public Task<List<Test1CM>> Filter(Test1FM filter) => this.DbService.FilterInternal<Test1Poco, Test1CM>(filter);
+        public IQueryable<Test1Poco> Test1 => this.LinqProvider.GetTable<Test1Poco>();
 
         /// <summary>
         /// <para>Database table 'test2'.</para>
         /// </summary>
-        public IQueryable<Test2Poco> Test2 => this.DbService.GetTable<Test2Poco>();
-
-        /// <summary>
-        /// <para>Database table 'test2'.</para>
-        /// <para>Filter model 'Test2FM'.</para>
-        /// <para>Catalog model 'Test2CM'.</para>
-        /// </summary>
-        public Task<List<Test2CM>> Filter(Test2FM filter) => this.DbService.FilterInternal<Test2Poco, Test2CM>(filter);
+        public IQueryable<Test2Poco> Test2 => this.LinqProvider.GetTable<Test2Poco>();
 
         /// <summary>
         /// <para>Database table 'view1'.</para>
         /// </summary>
-        public IQueryable<View1Poco> View1 => this.DbService.GetTable<View1Poco>();
-
-        /// <summary>
-        /// <para>Database table 'view1'.</para>
-        /// <para>Filter model 'View1FM'.</para>
-        /// <para>Catalog model 'View1CM'.</para>
-        /// </summary>
-        public Task<List<View1CM>> Filter(View1FM filter) => this.DbService.FilterInternal<View1Poco, View1CM>(filter);
+        public IQueryable<View1Poco> View1 => this.LinqProvider.GetTable<View1Poco>();
 
 
-        public IDbService<TestDbPocos> DbService { private get; set; }
+        public ILinqProvider LinqProvider { private get; set; }
     }
 
     public static class TestDbPocosExtensions
@@ -3226,6 +3801,68 @@ namespace PgNet.Tests
                         NpgsDataTypeName = "NpgsqlDbType.Date",
                         NpgsDataType = NpgsqlDbType.Date,
                         PropertyName = "TestDate2",
+                        TableName = "test1",
+                        TableSchema = "public",
+                    },
+                    new ColumnMetadataModel
+                    {
+                        ClrTypeName = "decimal?",
+                        ClrType = typeof(decimal?),
+                        ClrNonNullableTypeName = "decimal",
+                        ClrNonNullableType = typeof(decimal),
+                        ClrNullableTypeName = "decimal?",
+                        ClrNullableType = typeof(decimal?),
+                        ColumnComment = "" == string.Empty ? null : "",
+                        Comments = "".Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries),
+                        ColumnName = "test_decimal1",
+                        DbDataType = "numeric",
+                        IsPrimaryKey = bool.Parse("False"),
+                        PrimaryKeyConstraintName = "" == string.Empty ? null : "",
+                        IsForeignKey = bool.Parse("False"),
+                        ForeignKeyConstraintName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceColumnName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceSchemaName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceTableName = "" == string.Empty ? null : "",
+                        IsNullable = bool.Parse("True"),
+                        IsClrValueType = bool.Parse("True"),
+                        IsClrNullableType = bool.Parse("True"),
+                        IsClrReferenceType = bool.Parse("True"),
+                        Linq2dbDataTypeName = "DataType.Decimal",
+                        Linq2dbDataType = DataType.Decimal,
+                        NpgsDataTypeName = "NpgsqlDbType.Numeric",
+                        NpgsDataType = NpgsqlDbType.Numeric,
+                        PropertyName = "TestDecimal1",
+                        TableName = "test1",
+                        TableSchema = "public",
+                    },
+                    new ColumnMetadataModel
+                    {
+                        ClrTypeName = "decimal",
+                        ClrType = typeof(decimal),
+                        ClrNonNullableTypeName = "decimal",
+                        ClrNonNullableType = typeof(decimal),
+                        ClrNullableTypeName = "decimal?",
+                        ClrNullableType = typeof(decimal?),
+                        ColumnComment = "" == string.Empty ? null : "",
+                        Comments = "".Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries),
+                        ColumnName = "test_decimal2",
+                        DbDataType = "numeric",
+                        IsPrimaryKey = bool.Parse("False"),
+                        PrimaryKeyConstraintName = "" == string.Empty ? null : "",
+                        IsForeignKey = bool.Parse("False"),
+                        ForeignKeyConstraintName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceColumnName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceSchemaName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceTableName = "" == string.Empty ? null : "",
+                        IsNullable = bool.Parse("False"),
+                        IsClrValueType = bool.Parse("True"),
+                        IsClrNullableType = bool.Parse("False"),
+                        IsClrReferenceType = bool.Parse("False"),
+                        Linq2dbDataTypeName = "DataType.Decimal",
+                        Linq2dbDataType = DataType.Decimal,
+                        NpgsDataTypeName = "NpgsqlDbType.Numeric",
+                        NpgsDataType = NpgsqlDbType.Numeric,
+                        PropertyName = "TestDecimal2",
                         TableName = "test1",
                         TableSchema = "public",
                     },
@@ -3768,6 +4405,68 @@ namespace PgNet.Tests
                 {
                     new ColumnMetadataModel
                     {
+                        ClrTypeName = "int?",
+                        ClrType = typeof(int?),
+                        ClrNonNullableTypeName = "int",
+                        ClrNonNullableType = typeof(int),
+                        ClrNullableTypeName = "int?",
+                        ClrNullableType = typeof(int?),
+                        ColumnComment = "" == string.Empty ? null : "",
+                        Comments = "".Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries),
+                        ColumnName = "test1_test_id",
+                        DbDataType = "integer",
+                        IsPrimaryKey = bool.Parse("False"),
+                        PrimaryKeyConstraintName = "" == string.Empty ? null : "",
+                        IsForeignKey = bool.Parse("False"),
+                        ForeignKeyConstraintName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceColumnName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceSchemaName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceTableName = "" == string.Empty ? null : "",
+                        IsNullable = bool.Parse("True"),
+                        IsClrValueType = bool.Parse("True"),
+                        IsClrNullableType = bool.Parse("True"),
+                        IsClrReferenceType = bool.Parse("True"),
+                        Linq2dbDataTypeName = "DataType.Int32",
+                        Linq2dbDataType = DataType.Int32,
+                        NpgsDataTypeName = "NpgsqlDbType.Integer",
+                        NpgsDataType = NpgsqlDbType.Integer,
+                        PropertyName = "Test1TestID",
+                        TableName = "view1",
+                        TableSchema = "public",
+                    },
+                    new ColumnMetadataModel
+                    {
+                        ClrTypeName = "int?",
+                        ClrType = typeof(int?),
+                        ClrNonNullableTypeName = "int",
+                        ClrNonNullableType = typeof(int),
+                        ClrNullableTypeName = "int?",
+                        ClrNullableType = typeof(int?),
+                        ColumnComment = "" == string.Empty ? null : "",
+                        Comments = "".Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries),
+                        ColumnName = "test2_test_id",
+                        DbDataType = "integer",
+                        IsPrimaryKey = bool.Parse("False"),
+                        PrimaryKeyConstraintName = "" == string.Empty ? null : "",
+                        IsForeignKey = bool.Parse("False"),
+                        ForeignKeyConstraintName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceColumnName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceSchemaName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceTableName = "" == string.Empty ? null : "",
+                        IsNullable = bool.Parse("True"),
+                        IsClrValueType = bool.Parse("True"),
+                        IsClrNullableType = bool.Parse("True"),
+                        IsClrReferenceType = bool.Parse("True"),
+                        Linq2dbDataTypeName = "DataType.Int32",
+                        Linq2dbDataType = DataType.Int32,
+                        NpgsDataTypeName = "NpgsqlDbType.Integer",
+                        NpgsDataType = NpgsqlDbType.Integer,
+                        PropertyName = "Test2TestID",
+                        TableName = "view1",
+                        TableSchema = "public",
+                    },
+                    new ColumnMetadataModel
+                    {
                         ClrTypeName = "long?",
                         ClrType = typeof(long?),
                         ClrNonNullableTypeName = "long",
@@ -4042,6 +4741,68 @@ namespace PgNet.Tests
                         NpgsDataTypeName = "NpgsqlDbType.Date",
                         NpgsDataType = NpgsqlDbType.Date,
                         PropertyName = "TestDate2",
+                        TableName = "view1",
+                        TableSchema = "public",
+                    },
+                    new ColumnMetadataModel
+                    {
+                        ClrTypeName = "decimal?",
+                        ClrType = typeof(decimal?),
+                        ClrNonNullableTypeName = "decimal",
+                        ClrNonNullableType = typeof(decimal),
+                        ClrNullableTypeName = "decimal?",
+                        ClrNullableType = typeof(decimal?),
+                        ColumnComment = "" == string.Empty ? null : "",
+                        Comments = "".Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries),
+                        ColumnName = "test_decimal1",
+                        DbDataType = "numeric",
+                        IsPrimaryKey = bool.Parse("False"),
+                        PrimaryKeyConstraintName = "" == string.Empty ? null : "",
+                        IsForeignKey = bool.Parse("False"),
+                        ForeignKeyConstraintName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceColumnName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceSchemaName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceTableName = "" == string.Empty ? null : "",
+                        IsNullable = bool.Parse("True"),
+                        IsClrValueType = bool.Parse("True"),
+                        IsClrNullableType = bool.Parse("True"),
+                        IsClrReferenceType = bool.Parse("True"),
+                        Linq2dbDataTypeName = "DataType.Decimal",
+                        Linq2dbDataType = DataType.Decimal,
+                        NpgsDataTypeName = "NpgsqlDbType.Numeric",
+                        NpgsDataType = NpgsqlDbType.Numeric,
+                        PropertyName = "TestDecimal1",
+                        TableName = "view1",
+                        TableSchema = "public",
+                    },
+                    new ColumnMetadataModel
+                    {
+                        ClrTypeName = "decimal?",
+                        ClrType = typeof(decimal?),
+                        ClrNonNullableTypeName = "decimal",
+                        ClrNonNullableType = typeof(decimal),
+                        ClrNullableTypeName = "decimal?",
+                        ClrNullableType = typeof(decimal?),
+                        ColumnComment = "" == string.Empty ? null : "",
+                        Comments = "".Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries),
+                        ColumnName = "test_decimal2",
+                        DbDataType = "numeric",
+                        IsPrimaryKey = bool.Parse("False"),
+                        PrimaryKeyConstraintName = "" == string.Empty ? null : "",
+                        IsForeignKey = bool.Parse("False"),
+                        ForeignKeyConstraintName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceColumnName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceSchemaName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceTableName = "" == string.Empty ? null : "",
+                        IsNullable = bool.Parse("True"),
+                        IsClrValueType = bool.Parse("True"),
+                        IsClrNullableType = bool.Parse("True"),
+                        IsClrReferenceType = bool.Parse("True"),
+                        Linq2dbDataTypeName = "DataType.Decimal",
+                        Linq2dbDataType = DataType.Decimal,
+                        NpgsDataTypeName = "NpgsqlDbType.Numeric",
+                        NpgsDataType = NpgsqlDbType.Numeric,
+                        PropertyName = "TestDecimal2",
                         TableName = "view1",
                         TableSchema = "public",
                     },

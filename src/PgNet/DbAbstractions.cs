@@ -103,19 +103,15 @@
         Task<int> InsertWithoutMutating<T>(T model, CancellationToken cancellationToken = default)
             where T : IPoco<T>;
 
-        Task<List<TCatalogModel>> FilterInternal<TPoco, TCatalogModel>(IFilterModel<TPoco> filter, CancellationToken cancellationToken = default)
-            where TPoco : IReadOnlyPoco<TPoco>
-            where TCatalogModel : ICatalogModel<TPoco>, new();
-
         /// <summary>
         /// Creates a parameter of type T with NpgsqlDbType from the default type map 'defaultNpgsqlDbTypeMap'.
         /// </summary>
-        NpgsqlParameter Parameter<T>(string parameterName, T value);
+        NpgsqlParameter CreateParameter<T>(string parameterName, T value);
 
         /// <summary>
         /// Creates a parameter of type T by explicitly specifying NpgsqlDbType.
         /// </summary>
-        NpgsqlParameter Parameter<T>(string parameterName, T value, NpgsqlDbType dbType);
+        NpgsqlParameter CreateParameter<T>(string parameterName, T value, NpgsqlDbType dbType);
 
         /// <summary>
         /// Executes a query and returns objects 
@@ -158,12 +154,6 @@
         /// </summary>
         Task<T> FindByID<T>(int id, CancellationToken cancellationToken = default)
             where T : class, IPoco<T>, new();
-
-        /// <summary>
-        /// Returns an IQueryable from the relation that the <see cref="IReadOnlyPoco{T}"/> type maps to.
-        /// </summary>
-        IQueryable<T> GetTable<T>()
-            where T : class, IReadOnlyPoco<T>;
 
         /// <summary>
         /// The database specific API.
@@ -347,18 +337,30 @@
         GreaterThan,
 
         GreaterThanOrEqual,
-
+        
         StartsWith,
-
+        
         DoesNotStartWith,
-
+        
         EndsWith,
-
+        
         DoesNotEndWith,
-
+        
         Contains,
-
+        
         DoesNotContain,
+        
+        StartsWithCaseSensitive,
+
+        DoesNotStartWithCaseSensitive,
+
+        EndsWithCaseSensitive,
+
+        DoesNotEndWithCaseSensitive,
+
+        ContainsCaseSensitive,
+
+        DoesNotContainCaseSensitive,
 
         IsNull,
 
@@ -399,13 +401,18 @@
     /// <summary>
     /// Interface for all generated database specific API types.
     /// </summary>
-    /// <typeparam name="TDbPocos"></typeparam>
     public interface IDbPocos<TDbPocos>
         where TDbPocos : IDbPocos<TDbPocos>, new()
     {
-        IDbService<TDbPocos> DbService { set; }
+        ILinqProvider LinqProvider { set; }
     }
 
+    public interface ILinqProvider
+    {
+        IQueryable<T> GetTable<T>()
+            where T : class, IReadOnlyPoco<T>;
+    }
+    
     public class PocoTemplateContext
     {
         public List<TableMetadataModel> Tables { get; set; }

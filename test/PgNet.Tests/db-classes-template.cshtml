@@ -194,18 +194,11 @@ namespace @Model.Namespace
         @:/// <summary>
         @:/// <para>Database table '@(table.TableName)'.</para>
         @:/// </summary>
-        @:public IQueryable<@(table.ClassName)Poco> @(table.PluralClassName) => this.DbService.GetTable<@(table.ClassName)Poco>();
-@:
-        @:/// <summary>
-        @:/// <para>Database table '@(table.TableName)'.</para>
-        @:/// <para>Filter model '@(table.ClassName)FM'.</para>
-        @:/// <para>Catalog model '@(table.ClassName)CM'.</para>
-        @:/// </summary>
-        @:public Task<List<@(table.ClassName)CM>> Filter(@(table.ClassName)FM filter) => this.DbService.FilterInternal<@(table.ClassName)Poco, @(table.ClassName)CM>(filter);
+        @:public IQueryable<@(table.ClassName)Poco> @(table.PluralClassName) => this.LinqProvider.GetTable<@(table.ClassName)Poco>();
 @:
     }
 
-        public IDbService<@(Model.PocoClassName)> DbService { private get; set; }
+        public ILinqProvider LinqProvider { private get; set; }
     }
 
     public static class @(Model.PocoClassName)Extensions

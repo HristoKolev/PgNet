@@ -3,7 +3,7 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal static class TaskExtensions
+    internal static class CancellationTokenExtensions
     {
         /// <summary>
         /// Returns a task that will complete when the <see cref="CancellationToken"/> is cancelled.

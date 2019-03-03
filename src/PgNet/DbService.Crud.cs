@@ -20,7 +20,7 @@
             var sqlBuilder = new StringBuilder(128);
 
             // STATEMENT HEADER
-            sqlBuilder.Append("INSERT INTO \"");
+            sqlBuilder.Append($"INSERT INTO \"");
             sqlBuilder.Append(metadata.TableSchema);
             sqlBuilder.Append("\".\"");
             sqlBuilder.Append(metadata.TableName);
@@ -95,7 +95,7 @@
 
             string sql = sqlBuilder.ToString();
 
-            return this.ExecuteNonQueryInternal(sql, allParameters, cancellationToken);
+            return this.connection.ExecuteNonQuery(sql, allParameters, cancellationToken);
         }
 
         public Task<int> Delete<T>(T model, CancellationToken cancellationToken = default)
@@ -124,12 +124,12 @@
 
             var parameters = new[]
             {
-                this.Parameter("pk", ids)
+                this.CreateParameter("pk", ids)
             };
 
             string sql = $"DELETE FROM \"{tableSchema}\".\"{tableName}\" WHERE \"{primaryKeyName}\" = any(@pk);";
 
-            return this.ExecuteNonQueryInternal(sql, parameters, cancellationToken);
+            return this.connection.ExecuteNonQuery(sql, parameters, cancellationToken);
         }
 
         public Task<int> Delete<T>(int id, CancellationToken cancellationToken = default)
@@ -143,12 +143,12 @@
 
             var parameters = new[]
             {
-                this.Parameter("pk", id)
+                this.CreateParameter("pk", id)
             };
 
             string sql = $"DELETE FROM \"{tableSchema}\".\"{tableName}\" WHERE \"{primaryKeyName}\" = @pk;";
 
-            return this.ExecuteNonQueryInternal(sql, parameters, cancellationToken);
+            return this.connection.ExecuteNonQuery(sql, parameters, cancellationToken);
         }
 
         public async Task<int> Insert<T>(T model, CancellationToken cancellationToken = default)
@@ -173,7 +173,7 @@
             var sqlBuilder = new StringBuilder(128);
 
             // STATEMENT HEADER
-            sqlBuilder.Append("INSERT INTO \"");
+            sqlBuilder.Append($"INSERT INTO \"");
             sqlBuilder.Append(metadata.TableSchema);
             sqlBuilder.Append("\".\"");
             sqlBuilder.Append(metadata.TableName);
@@ -213,7 +213,7 @@
 
             string sql = sqlBuilder.ToString();
 
-            return this.ExecuteScalarInternal<int>(sql, parameters, cancellationToken);
+            return this.connection.ExecuteScalar<int>(sql, parameters, cancellationToken);
         }
 
         public async Task<int> Save<T>(T model, CancellationToken cancellationToken = default)
@@ -286,10 +286,10 @@
 
             var allParameters = parameters.Concat(new[]
             {
-                this.Parameter("pk", pk)
+                this.CreateParameter("pk", pk)
             });
 
-            return this.ExecuteNonQueryInternal(sql, allParameters, cancellationToken);
+            return this.connection.ExecuteNonQuery(sql, allParameters, cancellationToken);
         }
 
         public async Task<int> UpdateChangesOnly<T>(T model, CancellationToken cancellationToken = default)
@@ -309,10 +309,10 @@
 
             var selectParameters = new[]
             {
-                this.Parameter("pk", pk)
+                this.CreateParameter("pk", pk)
             };
 
-            var currentInstance = await this.QueryOneInternal<T>(selectSql, selectParameters, cancellationToken);
+            var currentInstance = await this.connection.QueryOne<T>(selectSql, selectParameters, cancellationToken);
 
             if (currentInstance == null)
             {
@@ -358,11 +358,11 @@
             sqlBuilder.Append(metadata.PrimaryKeyColumnName);
             sqlBuilder.Append(" = @pk;");
 
-            parameters.Add(this.Parameter("pk", pk));
+            parameters.Add(this.CreateParameter("pk", pk));
 
             string sql = sqlBuilder.ToString();
 
-            return await this.ExecuteNonQueryInternal(sql, parameters, cancellationToken);
+            return await this.connection.ExecuteNonQuery(sql, parameters, cancellationToken);
         }
 
         public Task<T> FindByID<T>(int id, CancellationToken cancellationToken = default)
@@ -376,12 +376,12 @@
 
             var parameters = new[]
             {
-                this.Parameter("pk", id)
+                this.CreateParameter("pk", id)
             };
 
             string sql = $"SELECT * FROM \"{tableSchema}\".\"{tableName}\" WHERE \"{primaryKeyName}\" = @pk;";
 
-            return this.QueryOneInternal<T>(sql, parameters, cancellationToken);
+            return this.connection.QueryOne<T>(sql, parameters, cancellationToken);
         }
 
         public void Copy<T>(IEnumerable<T> pocos)
@@ -425,7 +425,7 @@
 
             copyHeaderBuilder.Append(") FROM STDIN (FORMAT BINARY)");
 
-            using (var importer = this.dbConnection.BeginBinaryImport(copyHeaderBuilder.ToString()))
+            using (var importer = this.connection.BeginBinaryImport(copyHeaderBuilder.ToString()))
             {
                 foreach (var poco in pocos)
                 {

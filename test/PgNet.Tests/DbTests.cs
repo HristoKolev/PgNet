@@ -32,6 +32,8 @@ namespace PgNet.Tests
             Assert.Equal(poco.TestChar2, readFromDb.TestChar2);
             Assert.Equal(poco.TestDate1, readFromDb.TestDate1);
             Assert.Equal(poco.TestDate2, readFromDb.TestDate2);
+            Assert.Equal(poco.TestDecimal1, readFromDb.TestDecimal1);
+            Assert.Equal(poco.TestDecimal2, readFromDb.TestDecimal2);
             Assert.Equal(poco.TestDouble1, readFromDb.TestDouble1);
             Assert.Equal(poco.TestDouble2, readFromDb.TestDouble2);
             Assert.Equal(poco.TestID, readFromDb.TestID);
@@ -69,6 +71,8 @@ namespace PgNet.Tests
             Assert.Equal(poco.TestChar2, readFromDb.TestChar2);
             Assert.Equal(poco.TestDate1, readFromDb.TestDate1);
             Assert.Equal(poco.TestDate2, readFromDb.TestDate2);
+            Assert.Equal(poco.TestDecimal1, readFromDb.TestDecimal1);
+            Assert.Equal(poco.TestDecimal2, readFromDb.TestDecimal2);
             Assert.Equal(poco.TestDouble1, readFromDb.TestDouble1);
             Assert.Equal(poco.TestDouble2, readFromDb.TestDouble2);
             Assert.Equal(poco.TestID, readFromDb.TestID);
@@ -107,6 +111,8 @@ namespace PgNet.Tests
             Assert.Equal(pocoFromDb.TestChar2, cmFromDb.TestChar2);
             Assert.Equal(pocoFromDb.TestDate1, cmFromDb.TestDate1);
             Assert.Equal(pocoFromDb.TestDate2, cmFromDb.TestDate2);
+            Assert.Equal(pocoFromDb.TestDecimal1, cmFromDb.TestDecimal1);
+            Assert.Equal(pocoFromDb.TestDecimal2, cmFromDb.TestDecimal2);
             Assert.Equal(pocoFromDb.TestDouble1, cmFromDb.TestDouble1);
             Assert.Equal(pocoFromDb.TestDouble2, cmFromDb.TestDouble2);
             Assert.Equal(pocoFromDb.TestID, cmFromDb.TestID);
@@ -243,13 +249,6 @@ namespace PgNet.Tests
             this.Db.Copy(pocos);
         }
 
-        [Theory]
-        [ClassData(typeof(GeneratedFilterData<Test1Poco, Test1FM>))]
-        public async Task FilterSql(Test1FM filter)
-        {
-            await this.Db.FilterInternal<Test1Poco, Test1CM>(filter);
-        }
-
         [Fact]
         public async Task SelectCmDry()
         {
@@ -278,6 +277,8 @@ namespace PgNet.Tests
             Assert.Equal(poco.TestChar2, getters["test_char2"](poco));
             Assert.Equal(poco.TestDate1, getters["test_date1"](poco));
             Assert.Equal(poco.TestDate2, getters["test_date2"](poco));
+            Assert.Equal(poco.TestDecimal1, getters["test_decimal1"](poco));
+            Assert.Equal(poco.TestDecimal2, getters["test_decimal2"](poco));
             Assert.Equal(poco.TestDouble1, getters["test_double1"](poco));
             Assert.Equal(poco.TestDouble2, getters["test_double2"](poco));
             Assert.Equal(poco.TestID, getters["test_id"](poco));
@@ -324,6 +325,12 @@ namespace PgNet.Tests
 
             setters["test_date2"](newObj, poco.TestDate2);
             Assert.Equal(poco.TestDate2, newObj.TestDate2);
+
+            setters["test_decimal1"](newObj, poco.TestDecimal1);
+            Assert.Equal(poco.TestDecimal1, newObj.TestDecimal1);
+
+            setters["test_decimal2"](newObj, poco.TestDecimal2);
+            Assert.Equal(poco.TestDecimal2, newObj.TestDecimal2);
 
             setters["test_double1"](newObj, poco.TestDouble1);
             Assert.Equal(poco.TestDouble1, newObj.TestDouble1);
@@ -384,6 +391,8 @@ namespace PgNet.Tests
             Assert.Equal(poco.TestChar2, newObj.TestChar2);
             Assert.Equal(poco.TestDate1, newObj.TestDate1);
             Assert.Equal(poco.TestDate2, newObj.TestDate2);
+            Assert.Equal(poco.TestDecimal1, newObj.TestDecimal1);
+            Assert.Equal(poco.TestDecimal2, newObj.TestDecimal2);
             Assert.Equal(poco.TestDouble1, newObj.TestDouble1);
             Assert.Equal(poco.TestDouble2, newObj.TestDouble2);
             Assert.Equal(poco.TestID, newObj.TestID);
@@ -604,13 +613,6 @@ namespace PgNet.Tests
             this.Db.Copy(pocos);
         }
 
-        [Theory]
-        [ClassData(typeof(GeneratedFilterData<Test2Poco, Test2FM>))]
-        public async Task FilterSql(Test2FM filter)
-        {
-            await this.Db.FilterInternal<Test2Poco, Test2CM>(filter);
-        }
-
         [Fact]
         public async Task SelectCmDry()
         {
@@ -702,13 +704,6 @@ namespace PgNet.Tests
 
     public class View1Test : DatabaseTest
     {
-        [Theory]
-        [ClassData(typeof(GeneratedFilterData<View1Poco, View1FM>))]
-        public async Task FilterSql(View1FM filter)
-        {
-            await this.Db.FilterInternal<View1Poco, View1CM>(filter);
-        }
-
         [Fact]
         public async Task SelectCmDry()
         {
@@ -729,6 +724,8 @@ namespace PgNet.Tests
         {
             var getters = DbCodeGenerator.GenerateGetters<View1Poco>();
 
+            Assert.Equal(poco.Test1TestID, getters["test1_test_id"](poco));
+            Assert.Equal(poco.Test2TestID, getters["test2_test_id"](poco));
             Assert.Equal(poco.TestBigint1, getters["test_bigint1"](poco));
             Assert.Equal(poco.TestBigint2, getters["test_bigint2"](poco));
             Assert.Equal(poco.TestBoolean1, getters["test_boolean1"](poco));
@@ -738,6 +735,8 @@ namespace PgNet.Tests
             Assert.Equal(poco.TestDate, getters["test_date"](poco));
             Assert.Equal(poco.TestDate1, getters["test_date1"](poco));
             Assert.Equal(poco.TestDate2, getters["test_date2"](poco));
+            Assert.Equal(poco.TestDecimal1, getters["test_decimal1"](poco));
+            Assert.Equal(poco.TestDecimal2, getters["test_decimal2"](poco));
             Assert.Equal(poco.TestDouble1, getters["test_double1"](poco));
             Assert.Equal(poco.TestDouble2, getters["test_double2"](poco));
             Assert.Equal(poco.TestInteger1, getters["test_integer1"](poco));
@@ -760,6 +759,12 @@ namespace PgNet.Tests
             var setters = DbCodeGenerator.GenerateSetters<View1Poco>();
 
             var newObj = new View1Poco();
+
+            setters["test1_test_id"](newObj, poco.Test1TestID);
+            Assert.Equal(poco.Test1TestID, newObj.Test1TestID);
+
+            setters["test2_test_id"](newObj, poco.Test2TestID);
+            Assert.Equal(poco.Test2TestID, newObj.Test2TestID);
 
             setters["test_bigint1"](newObj, poco.TestBigint1);
             Assert.Equal(poco.TestBigint1, newObj.TestBigint1);
@@ -787,6 +792,12 @@ namespace PgNet.Tests
 
             setters["test_date2"](newObj, poco.TestDate2);
             Assert.Equal(poco.TestDate2, newObj.TestDate2);
+
+            setters["test_decimal1"](newObj, poco.TestDecimal1);
+            Assert.Equal(poco.TestDecimal1, newObj.TestDecimal1);
+
+            setters["test_decimal2"](newObj, poco.TestDecimal2);
+            Assert.Equal(poco.TestDecimal2, newObj.TestDecimal2);
 
             setters["test_double1"](newObj, poco.TestDouble1);
             Assert.Equal(poco.TestDouble1, newObj.TestDouble1);
@@ -839,6 +850,8 @@ namespace PgNet.Tests
 
             Assert.NotEqual(poco, newObj);
 
+            Assert.Equal(poco.Test1TestID, newObj.Test1TestID);
+            Assert.Equal(poco.Test2TestID, newObj.Test2TestID);
             Assert.Equal(poco.TestBigint1, newObj.TestBigint1);
             Assert.Equal(poco.TestBigint2, newObj.TestBigint2);
             Assert.Equal(poco.TestBoolean1, newObj.TestBoolean1);
@@ -848,6 +861,8 @@ namespace PgNet.Tests
             Assert.Equal(poco.TestDate, newObj.TestDate);
             Assert.Equal(poco.TestDate1, newObj.TestDate1);
             Assert.Equal(poco.TestDate2, newObj.TestDate2);
+            Assert.Equal(poco.TestDecimal1, newObj.TestDecimal1);
+            Assert.Equal(poco.TestDecimal2, newObj.TestDecimal2);
             Assert.Equal(poco.TestDouble1, newObj.TestDouble1);
             Assert.Equal(poco.TestDouble2, newObj.TestDouble2);
             Assert.Equal(poco.TestInteger1, newObj.TestInteger1);

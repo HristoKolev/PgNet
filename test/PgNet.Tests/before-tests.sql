@@ -23,6 +23,8 @@ create table "public"."test1" (
   test_real2 real not NULL,
   test_double1 double precision,
   test_double2 double precision NOT NULL,
+  test_decimal1 numeric,
+  test_decimal2 numeric NOT NULL,
   test_char1 char,
   test_char2 char NOT NULL,
 
@@ -38,29 +40,33 @@ CREATE TABLE "public"."test2" (
 
 DROP view if exists "public"."view1";
 
-create or REPLACE view "public"."view1" as select
-   test_name1,
-   test_name2,
-   test_date1,
-   test_date2,
-   test_timestamp1,
-   test_timestamp2,
-   test_boolean1,
-   test_boolean2,
-   test_integer1,
-   test_integer2,
-   test_bigint1,
-   test_bigint2,
-   test_text1,
-   test_text2,
-   test_real1,
-   test_real2,
-   test_double1,
-   test_double2,
-   test_char1,
-   test_char2,
-   test_name,
-   test_date
+create or REPLACE view "public"."view1" as
+select test1.test_id as test1_test_id,
+       test_name1,
+       test_name2,
+       test_date1,
+       test_date2,
+       test_timestamp1,
+       test_timestamp2,
+       test_boolean1,
+       test_boolean2,
+       test_integer1,
+       test_integer2,
+       test_bigint1,
+       test_bigint2,
+       test_text1,
+       test_text2,
+       test_real1,
+       test_real2,
+       test_double1,
+       test_double2,
+       test_decimal1,
+       test_decimal2,
+       test_char1,
+       test_char2,
+       test2.test_id as test2_test_id,
+       test_name,
+       test_date
 from test1 JOIN test2 on test1.test_id = test2.test_id;
 
 drop view if exists "public"."db_columns";
