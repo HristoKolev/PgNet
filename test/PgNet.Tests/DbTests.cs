@@ -1,4 +1,4 @@
-namespace PgNet.Tests
+namespace PgNet.Generated
 {
     using System;
     using System.Collections.Generic;
@@ -151,9 +151,9 @@ namespace PgNet.Tests
         [ClassData(typeof(GeneratedBulkData<Test1Poco>))]
         public void GetColumnChanges(List<Test1Poco> pocos)
         {
-            var getColumnChanges = TestDbMetadata.Test1PocoMetadata.GetColumnChanges;
+            var getColumnChanges = DbMetadata.Test1PocoMetadata.GetColumnChanges;
 
-            var columns = TestDbMetadata.Test1PocoMetadata.Columns.Where(x => !x.IsPrimaryKey).ToArray();
+            var columns = DbMetadata.Test1PocoMetadata.Columns.Where(x => !x.IsPrimaryKey).ToArray();
             var getters = DbCodeGenerator.GenerateGetters<Test1Poco>();
 
             var allColumnNames = new HashSet<string>(columns.Select(x => x.ColumnName));
@@ -200,11 +200,11 @@ namespace PgNet.Tests
         // ReSharper disable once CyclomaticComplexity
         public void GenerateParameters(Test1Poco poco)
         {
-            var getParameters = TestDbMetadata.Test1PocoMetadata.GenerateParameters;
+            var getParameters = DbMetadata.Test1PocoMetadata.GenerateParameters;
 
             var parameters = getParameters(poco);
 
-            var columns = TestDbMetadata.Test1PocoMetadata.Columns.Where(x => !x.IsPrimaryKey).ToArray();
+            var columns = DbMetadata.Test1PocoMetadata.Columns.Where(x => !x.IsPrimaryKey).ToArray();
             var getters = DbCodeGenerator.GenerateGetters<Test1Poco>();
 
             for (int i = 0; i < columns.Length; i++)
@@ -223,11 +223,11 @@ namespace PgNet.Tests
         // ReSharper disable once CyclomaticComplexity
         public void GetAllColumns(Test1Poco poco)
         {
-            var getAllColumns = TestDbMetadata.Test1PocoMetadata.GetAllColumns;
+            var getAllColumns = DbMetadata.Test1PocoMetadata.GetAllColumns;
 
             var (columnNames, parameters) = getAllColumns(poco);
 
-            var columns = TestDbMetadata.Test1PocoMetadata.Columns.Where(x => !x.IsPrimaryKey).ToArray();
+            var columns = DbMetadata.Test1PocoMetadata.Columns.Where(x => !x.IsPrimaryKey).ToArray();
             var getters = DbCodeGenerator.GenerateGetters<Test1Poco>();
 
             for (int i = 0; i < columns.Length; i++)
@@ -377,7 +377,7 @@ namespace PgNet.Tests
         [ClassData(typeof(GeneratedData<Test1Poco>))]
         public void Clone(Test1Poco poco)
         {
-            var clone = TestDbMetadata.Test1PocoMetadata.Clone;
+            var clone = DbMetadata.Test1PocoMetadata.Clone;
 
             var newObj = clone(poco);
 
@@ -430,7 +430,7 @@ namespace PgNet.Tests
                     return x.GetValue(filter);
                 }).ToList();
 
-            var (columnNames, columnParameters, operators) = TestDbMetadata.Test1PocoMetadata.ParseFm(filter);
+            var (columnNames, columnParameters, operators) = DbMetadata.Test1PocoMetadata.ParseFm(filter);
 
             Assert.Equal(expectedNames, columnNames);
             Assert.Equal(expectedOperators, operators);
@@ -515,9 +515,9 @@ namespace PgNet.Tests
         [ClassData(typeof(GeneratedBulkData<Test2Poco>))]
         public void GetColumnChanges(List<Test2Poco> pocos)
         {
-            var getColumnChanges = TestDbMetadata.Test2PocoMetadata.GetColumnChanges;
+            var getColumnChanges = DbMetadata.Test2PocoMetadata.GetColumnChanges;
 
-            var columns = TestDbMetadata.Test2PocoMetadata.Columns.Where(x => !x.IsPrimaryKey).ToArray();
+            var columns = DbMetadata.Test2PocoMetadata.Columns.Where(x => !x.IsPrimaryKey).ToArray();
             var getters = DbCodeGenerator.GenerateGetters<Test2Poco>();
 
             var allColumnNames = new HashSet<string>(columns.Select(x => x.ColumnName));
@@ -564,11 +564,11 @@ namespace PgNet.Tests
         // ReSharper disable once CyclomaticComplexity
         public void GenerateParameters(Test2Poco poco)
         {
-            var getParameters = TestDbMetadata.Test2PocoMetadata.GenerateParameters;
+            var getParameters = DbMetadata.Test2PocoMetadata.GenerateParameters;
 
             var parameters = getParameters(poco);
 
-            var columns = TestDbMetadata.Test2PocoMetadata.Columns.Where(x => !x.IsPrimaryKey).ToArray();
+            var columns = DbMetadata.Test2PocoMetadata.Columns.Where(x => !x.IsPrimaryKey).ToArray();
             var getters = DbCodeGenerator.GenerateGetters<Test2Poco>();
 
             for (int i = 0; i < columns.Length; i++)
@@ -587,11 +587,11 @@ namespace PgNet.Tests
         // ReSharper disable once CyclomaticComplexity
         public void GetAllColumns(Test2Poco poco)
         {
-            var getAllColumns = TestDbMetadata.Test2PocoMetadata.GetAllColumns;
+            var getAllColumns = DbMetadata.Test2PocoMetadata.GetAllColumns;
 
             var (columnNames, parameters) = getAllColumns(poco);
 
-            var columns = TestDbMetadata.Test2PocoMetadata.Columns.Where(x => !x.IsPrimaryKey).ToArray();
+            var columns = DbMetadata.Test2PocoMetadata.Columns.Where(x => !x.IsPrimaryKey).ToArray();
             var getters = DbCodeGenerator.GenerateGetters<Test2Poco>();
 
             for (int i = 0; i < columns.Length; i++)
@@ -661,7 +661,7 @@ namespace PgNet.Tests
         [ClassData(typeof(GeneratedData<Test2Poco>))]
         public void Clone(Test2Poco poco)
         {
-            var clone = TestDbMetadata.Test2PocoMetadata.Clone;
+            var clone = DbMetadata.Test2PocoMetadata.Clone;
 
             var newObj = clone(poco);
 
@@ -694,7 +694,7 @@ namespace PgNet.Tests
                     return x.GetValue(filter);
                 }).ToList();
 
-            var (columnNames, columnParameters, operators) = TestDbMetadata.Test2PocoMetadata.ParseFm(filter);
+            var (columnNames, columnParameters, operators) = DbMetadata.Test2PocoMetadata.ParseFm(filter);
 
             Assert.Equal(expectedNames, columnNames);
             Assert.Equal(expectedOperators, operators);
@@ -844,7 +844,7 @@ namespace PgNet.Tests
         [ClassData(typeof(GeneratedData<View1Poco>))]
         public void Clone(View1Poco poco)
         {
-            var clone = TestDbMetadata.View1PocoMetadata.Clone;
+            var clone = DbMetadata.View1PocoMetadata.Clone;
 
             var newObj = clone(poco);
 
@@ -900,7 +900,7 @@ namespace PgNet.Tests
                     return x.GetValue(filter);
                 }).ToList();
 
-            var (columnNames, columnParameters, operators) = TestDbMetadata.View1PocoMetadata.ParseFm(filter);
+            var (columnNames, columnParameters, operators) = DbMetadata.View1PocoMetadata.ParseFm(filter);
 
             Assert.Equal(expectedNames, columnNames);
             Assert.Equal(expectedOperators, operators);

@@ -1,8 +1,10 @@
 ﻿namespace PgNet.Tests.Infrastructure
 {
+    using Generated;
+
     using Npgsql;
 
-    public class TestDbService : DbService<TestDbPocos>
+    public class TestDbService : DbService<DbPocos>
     {
         const string TestConnectionString = "Server=dev-host.lan;Port=4202;Database=test;Uid=test;Pwd=test123;";
 

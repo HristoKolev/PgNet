@@ -1,4 +1,4 @@
-namespace PgNet.Tests
+namespace PgNet.Generated
 {
     using System;
     using System.Collections.Generic;
@@ -317,7 +317,7 @@ namespace PgNet.Tests
         [Column(Name = "test_timestamp2", DataType = DataType.DateTime2)]
         public DateTime? TestTimestamp2 { get; set; }
 
-        public static TableMetadataModel<Test1Poco> Metadata => TestDbMetadata.Test1PocoMetadata;
+        public static TableMetadataModel<Test1Poco> Metadata => DbMetadata.Test1PocoMetadata;
 
         public Test1BM ToBm()
         {
@@ -398,7 +398,7 @@ namespace PgNet.Tests
         [Column(Name = "test_name", DataType = DataType.Text)]
         public string TestName { get; set; }
 
-        public static TableMetadataModel<Test2Poco> Metadata => TestDbMetadata.Test2PocoMetadata;
+        public static TableMetadataModel<Test2Poco> Metadata => DbMetadata.Test2PocoMetadata;
 
         public Test2BM ToBm()
         {
@@ -756,7 +756,7 @@ namespace PgNet.Tests
         [Column(Name = "test_timestamp2", DataType = DataType.DateTime2)]
         public DateTime? TestTimestamp2 { get; set; }
 
-        public static TableMetadataModel<View1Poco> Metadata => TestDbMetadata.View1PocoMetadata;
+        public static TableMetadataModel<View1Poco> Metadata => DbMetadata.View1PocoMetadata;
 
     }
 
@@ -3487,7 +3487,7 @@ namespace PgNet.Tests
         }
     }
 
-    public class TestDbPocos : IDbPocos<TestDbPocos>
+    public class DbPocos : IDbPocos<DbPocos>
     {
         /// <summary>
         /// <para>Database table 'test1'.</para>
@@ -3508,7 +3508,7 @@ namespace PgNet.Tests
         public ILinqProvider LinqProvider { private get; set; }
     }
 
-    public static class TestDbPocosExtensions
+    public static class DbPocosExtensions
     {
         /// <summary>
         /// <para>Database table 'test1'.</para>
@@ -3527,7 +3527,7 @@ namespace PgNet.Tests
 
     }
 
-    public class TestDbMetadata : IDbMetadata
+    public class DbMetadata : IDbMetadata
     {
         internal static TableMetadataModel<Test1Poco> Test1PocoMetadata;
 
@@ -5237,7 +5237,7 @@ namespace PgNet.Tests
             }
         }
 
-        static TestDbMetadata()
+        static DbMetadata()
         {
             Initialize();
         }
