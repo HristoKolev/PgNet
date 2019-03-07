@@ -97,7 +97,7 @@ namespace PgNet
                     list.Add(new NpgsqlParameter
                     {
                         Value = property.GetValue(poco) ?? DBNull.Value,
-                        NpgsqlDbType = column.NpgsDataType
+                        NpgsqlDbType = column.PropertyType.NpgsqlDbType
                     });
                 }
 
@@ -138,7 +138,7 @@ namespace PgNet
                         genericWrite.MakeGenericMethod(type)
                                     .Invoke(importer, new []
                         {
-                            value, column.NpgsDataType
+                            value, column.PropertyType.NpgsqlDbType
                         });
                     }
                 }
@@ -166,7 +166,7 @@ namespace PgNet
                     list.Add(new NpgsqlParameter
                     {
                         Value = property.GetValue(poco) ?? DBNull.Value,
-                        NpgsqlDbType = column.NpgsDataType
+                        NpgsqlDbType = column.PropertyType.NpgsqlDbType
                     });
                 }
 
@@ -199,7 +199,7 @@ namespace PgNet
                         parameters.Add(new NpgsqlParameter
                         {
                             Value = property.GetValue(obj2) ?? DBNull.Value,
-                            NpgsqlDbType = column.NpgsDataType
+                            NpgsqlDbType = column.PropertyType.NpgsqlDbType
                         });
                     }
                 }

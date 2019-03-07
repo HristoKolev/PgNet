@@ -111,7 +111,7 @@
 
             var setters = DbCodeGenerator.GenerateSetters<T>();
 
-            var valuesArray = metadata.Columns.Select(x => GetValuesByType(x.NpgsDataType)).ToArray();
+            var valuesArray = metadata.Columns.Select(x => GetValuesByType(x.PropertyType.NpgsqlDbType)).ToArray();
 
             for (var i = 0; i < metadata.Columns.Count; i++)
             {
@@ -134,7 +134,7 @@
 
                         foreach (var otherColumn in metadata.Columns.Where(x => x != column && !x.IsPrimaryKey))
                         {
-                            var newValue = GetValuesByType(otherColumn.NpgsDataType).First();
+                            var newValue = GetValuesByType(otherColumn.PropertyType.NpgsqlDbType).First();
                             setters[otherColumn.ColumnName](instance, newValue);
                         }
 

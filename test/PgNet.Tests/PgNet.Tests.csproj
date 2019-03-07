@@ -17,7 +17,6 @@
         <None Update="*.sql">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Remove="*.cshtml" />
     </ItemGroup>
 
     <ItemGroup>

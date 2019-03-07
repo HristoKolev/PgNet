@@ -238,18 +238,6 @@
     /// </summary>
     public class ColumnMetadataModel
     {
-        public Type ClrNonNullableType { get; set; }
-
-        public string ClrNonNullableTypeName { get; set; }
-
-        public Type ClrNullableType { get; set; }
-
-        public string ClrNullableTypeName { get; set; }
-
-        public Type ClrType { get; set; }
-
-        public string ClrTypeName { get; set; }
-
         public string ColumnComment { get; set; }
 
         public string ColumnName { get; set; }
@@ -265,28 +253,12 @@
         public string ForeignKeyReferenceSchemaName { get; set; }
 
         public string ForeignKeyReferenceTableName { get; set; }
-
-        public bool IsClrValueType { get; set; }
-
-        public bool IsClrNullableType { get; set; }
-
-        public bool IsClrReferenceType { get; set; }
-
+ 
         public bool IsForeignKey { get; set; }
 
         public bool IsNullable { get; set; }
 
         public bool IsPrimaryKey { get; set; }
-
-        // ReSharper disable once InconsistentNaming
-        public DataType Linq2dbDataType { get; set; }
-
-        // ReSharper disable once InconsistentNaming
-        public string Linq2dbDataTypeName { get; set; }
-
-        public NpgsqlDbType NpgsDataType { get; set; }
-
-        public string NpgsDataTypeName { get; set; }
 
         public string PrimaryKeyConstraintName { get; set; }
 
@@ -295,10 +267,46 @@
         public string TableName { get; set; }
 
         public string TableSchema { get; set; }
-
-        public string[] ValidOperators { get; set; }
+ 
 
         public bool IsViewColumn { get; set; }
+        
+        public SimpleType PropertyType { get; set; }
+    }
+    
+    public class SimpleType
+    {
+        public string Linq2DbDataTypeName { get; set; }        
+
+        public string ClrTypeName { get; set; }
+
+        public string DbDataType { get; set; }
+
+        public bool IsNullable { get; set; }
+
+        public string NpgsqlDbTypeName { get; set; }
+
+        public string ClrNonNullableTypeName { get; set; }
+
+        public string ClrNullableTypeName { get; set; }
+
+        public bool IsClrValueType { get; set; }
+
+        public bool IsClrNullableType { get; set; }
+
+        public bool IsClrReferenceType { get; set; }
+        
+        public string[] ValidOperators { get; set; }
+
+        public Type ClrType { get; set; }
+
+        public Type ClrNonNullableType { get; set; }
+
+        public Type ClrNullableType { get; set; }
+
+        public DataType Linq2DbDataType { get; set; }
+
+        public NpgsqlDbType NpgsqlDbType { get; set; }
     }
 
     /// <summary>

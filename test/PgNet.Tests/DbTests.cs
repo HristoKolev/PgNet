@@ -187,7 +187,7 @@ namespace PgNet.Generated
                         int index = columnNames.IndexOf(column.ColumnName);
                         var parameter = parameters[index];
 
-                        Assert.Equal(column.NpgsDataType, parameter.NpgsqlDbType);
+                        Assert.Equal(column.PropertyType.NpgsqlDbType, parameter.NpgsqlDbType);
 
                         Assert.Equal(value2 ?? DBNull.Value, parameter.Value);
                     }
@@ -551,7 +551,7 @@ namespace PgNet.Generated
                         int index = columnNames.IndexOf(column.ColumnName);
                         var parameter = parameters[index];
 
-                        Assert.Equal(column.NpgsDataType, parameter.NpgsqlDbType);
+                        Assert.Equal(column.PropertyType.NpgsqlDbType, parameter.NpgsqlDbType);
 
                         Assert.Equal(value2 ?? DBNull.Value, parameter.Value);
                     }
