@@ -3506,6 +3506,12 @@ namespace PgNet.Generated
         public IQueryable<View1Poco> View1 => this.LinqProvider.GetTable<View1Poco>();
 
 
+        /// <summary>
+        /// <para>Database function 'say_hello'.</para>        
+        /// </summary>
+        [Sql.Function(ServerSideOnly = true)]
+        public static string SayHello(string name, int? age) => throw new NotImplementedException();        
+
         public ILinqProvider LinqProvider { private get; set; }
     }
 
@@ -3536,6 +3542,8 @@ namespace PgNet.Generated
 
         internal static TableMetadataModel<View1Poco> View1PocoMetadata;
 
+        internal static readonly List<FunctionMetadataModel> Functions = new List<FunctionMetadataModel>(); 
+            
         private static readonly object InitLock = new object();
 
         private static bool Initialized;
@@ -5476,6 +5484,73 @@ namespace PgNet.Generated
             View1PocoMetadata.Clone = DbCodeGenerator.GetClone<View1Poco>();
             View1PocoMetadata.ParseFm = DbCodeGenerator.GetParseFm(View1PocoMetadata, typeof(View1FM));
 
+
+            Functions.Add(new FunctionMetadataModel
+            {
+                SchemaName = "public" == string.Empty ? null : "public",
+                FunctionName = "say_hello" == string.Empty ? null : "say_hello",
+                MethodName = "SayHello" == string.Empty ? null : "SayHello",
+                FunctionReturnTypeName = "text" == string.Empty ? null : "text",
+                FunctionComment = "Returns catspeak." == string.Empty ? null : "Returns catspeak.",
+                FunctionArgumentsAsString = "name text, age integer" == string.Empty ? null : "name text, age integer",
+                FunctionReturnType = new SimpleType
+                {
+                    ClrTypeName = "string",
+                    ClrType = typeof(string),
+                    ClrNonNullableTypeName = "string",
+                    ClrNonNullableType = typeof(string),
+                    ClrNullableTypeName = "string",
+                    ClrNullableType = typeof(string),
+                    DbDataType = "text",
+                    IsNullable = bool.Parse("True"),
+                    IsClrValueType = bool.Parse("False"),
+                    IsClrNullableType = bool.Parse("False"),
+                    IsClrReferenceType = bool.Parse("True"),
+                    Linq2DbDataTypeName = "DataType.Text",
+                    Linq2DbDataType = DataType.Text,
+                    NpgsqlDbTypeName = "NpgsqlDbType.Text",
+                    NpgsqlDbType = NpgsqlDbType.Text,
+                },
+                FunctionArguments = new Dictionary<string, SimpleType>
+                {
+                    { "name", new SimpleType 
+                    {
+                        ClrTypeName = "string",
+                        ClrType = typeof(string),
+                        ClrNonNullableTypeName = "string",
+                        ClrNonNullableType = typeof(string),
+                        ClrNullableTypeName = "string",
+                        ClrNullableType = typeof(string),
+                        DbDataType = "text",
+                        IsNullable = bool.Parse("True"),
+                        IsClrValueType = bool.Parse("False"),
+                        IsClrNullableType = bool.Parse("False"),
+                        IsClrReferenceType = bool.Parse("True"),
+                        Linq2DbDataTypeName = "DataType.Text",
+                        Linq2DbDataType = DataType.Text,
+                        NpgsqlDbTypeName = "NpgsqlDbType.Text",
+                        NpgsqlDbType = NpgsqlDbType.Text,
+                    }},
+                    { "age", new SimpleType 
+                    {
+                        ClrTypeName = "int?",
+                        ClrType = typeof(int?),
+                        ClrNonNullableTypeName = "int",
+                        ClrNonNullableType = typeof(int),
+                        ClrNullableTypeName = "int?",
+                        ClrNullableType = typeof(int?),
+                        DbDataType = "integer",
+                        IsNullable = bool.Parse("True"),
+                        IsClrValueType = bool.Parse("True"),
+                        IsClrNullableType = bool.Parse("True"),
+                        IsClrReferenceType = bool.Parse("True"),
+                        Linq2DbDataTypeName = "DataType.Int32",
+                        Linq2DbDataType = DataType.Int32,
+                        NpgsqlDbTypeName = "NpgsqlDbType.Integer",
+                        NpgsqlDbType = NpgsqlDbType.Integer,
+                    }},
+                },
+            });
         }
 
         public static void Initialize()

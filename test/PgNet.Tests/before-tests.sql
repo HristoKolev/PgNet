@@ -68,3 +68,7 @@ select test1.test_id as test1_test_id,
        test_name,
        test_date
 from test1 JOIN test2 on test1.test_id = test2.test_id;
+
+ CREATE OR REPLACE FUNCTION "public".increment_by_one(num INTEGER) RETURNS INTEGER AS $$
+   SELECT num + 1;
+ $$ LANGUAGE 'sql';

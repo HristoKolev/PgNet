@@ -274,6 +274,27 @@
         public SimpleType PropertyType { get; set; }
     }
     
+    public class FunctionMetadataModel
+    {
+        public string SchemaName { get; set; }
+
+        public string FunctionName { get; set; }
+
+        public string MethodName { get; set; }
+
+        public string FunctionDefinition { get; set; }
+
+        public string FunctionReturnTypeName { get; set; }
+        
+        public SimpleType FunctionReturnType { get; set; }
+
+        public string FunctionComment { get; set; }
+
+        public string FunctionArgumentsAsString { get; set; }
+
+        public Dictionary<string, SimpleType> FunctionArguments { get; set; }
+    }
+    
     public class SimpleType
     {
         public string Linq2DbDataTypeName { get; set; }        
@@ -424,6 +445,8 @@
     public class PocoTemplateContext
     {
         public List<TableMetadataModel> Tables { get; set; }
+
+        public List<FunctionMetadataModel> Functions { get; set; }
 
         public string Namespace { get; set; }
 
