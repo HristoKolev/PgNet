@@ -413,6 +413,30 @@ namespace PgNet.Generated
     }
 
     /// <summary>
+    /// <para>Table name: 'v_generate_series'.</para>
+    /// <para>Table schema: 'public'.</para>
+    /// </summary>
+    [Table(Schema="public", Name = "v_generate_series")]
+    public class VGenerateSeriesPoco : IReadOnlyPoco<VGenerateSeriesPoco>
+    {
+        /// <summary>
+        /// <para>Column name: 'num'.</para>
+        /// <para>Table name: 'v_generate_series'.</para>
+        /// <para>This column is nullable.</para>
+        /// <para>PostgreSQL data type: 'integer'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Integer'.</para>
+        /// <para>CLR type: 'int?'.</para>
+        /// <para>linq2db data type: 'DataType.Int32'.</para>
+        /// </summary>
+        [Nullable]
+        [Column(Name = "num", DataType = DataType.Int32)]
+        public int? Num { get; set; }
+
+        public static TableMetadataModel<VGenerateSeriesPoco> Metadata => DbMetadata.VGenerateSeriesPocoMetadata;
+
+    }
+
+    /// <summary>
     /// <para>Table name: 'view1'.</para>
     /// <para>Table schema: 'public'.</para>
     /// </summary>
@@ -1065,6 +1089,25 @@ namespace PgNet.Generated
         /// <para>linq2db data type: 'DataType.Text'.</para>
         /// </summary>
         public string TestName { get; set; }
+
+    }
+
+    /// <summary>
+    /// <para>Table name: 'v_generate_series'.</para>
+    /// <para>Table schema: 'public'.</para>
+    /// </summary>
+    public class VGenerateSeriesCM : ICatalogModel<VGenerateSeriesPoco>
+    {
+        /// <summary>
+        /// <para>Column name: 'num'.</para>
+        /// <para>Table name: 'v_generate_series'.</para>
+        /// <para>This column is nullable.</para>
+        /// <para>PostgreSQL data type: 'integer'.</para>
+        /// <para>NpgsqlDbType: 'NpgsqlDbType.Integer'.</para>
+        /// <para>CLR type: 'int?'.</para>
+        /// <para>linq2db data type: 'DataType.Int32'.</para>
+        /// </summary>
+        public int? Num { get; set; }
 
     }
 
@@ -2209,6 +2252,44 @@ namespace PgNet.Generated
 
         [FilterOperator(QueryOperatorType.IsNotIn, "TestName", NpgsqlDbType.Text, "test_name")]
         public string[] TestName_IsNotIn { get; set; }
+
+    }
+
+    /// <summary>
+    /// <para>Table name: 'v_generate_series'.</para>
+    /// <para>Table schema: 'public'.</para>
+    /// </summary>
+    public class VGenerateSeriesFM : IFilterModel<VGenerateSeriesPoco>
+    {
+        [FilterOperator(QueryOperatorType.Equal, "Num", NpgsqlDbType.Integer, "num")]
+        public int? Num { get; set; }
+
+        [FilterOperator(QueryOperatorType.NotEqual, "Num", NpgsqlDbType.Integer, "num")]
+        public int? Num_NotEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThan, "Num", NpgsqlDbType.Integer, "num")]
+        public int? Num_LessThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.LessThanOrEqual, "Num", NpgsqlDbType.Integer, "num")]
+        public int? Num_LessThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThan, "Num", NpgsqlDbType.Integer, "num")]
+        public int? Num_GreaterThan { get; set; }
+
+        [FilterOperator(QueryOperatorType.GreaterThanOrEqual, "Num", NpgsqlDbType.Integer, "num")]
+        public int? Num_GreaterThanOrEqual { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNull, "Num", NpgsqlDbType.Integer, "num")]
+        public bool? Num_IsNull { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNotNull, "Num", NpgsqlDbType.Integer, "num")]
+        public bool? Num_IsNotNull { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsIn, "Num", NpgsqlDbType.Integer, "num")]
+        public int[] Num_IsIn { get; set; }
+
+        [FilterOperator(QueryOperatorType.IsNotIn, "Num", NpgsqlDbType.Integer, "num")]
+        public int[] Num_IsNotIn { get; set; }
 
     }
 
@@ -3501,16 +3582,21 @@ namespace PgNet.Generated
         public IQueryable<Test2Poco> Test2 => this.LinqProvider.GetTable<Test2Poco>();
 
         /// <summary>
+        /// <para>Database table 'v_generate_series'.</para>
+        /// </summary>
+        public IQueryable<VGenerateSeriesPoco> VGenerateSeries => this.LinqProvider.GetTable<VGenerateSeriesPoco>();
+
+        /// <summary>
         /// <para>Database table 'view1'.</para>
         /// </summary>
         public IQueryable<View1Poco> View1 => this.LinqProvider.GetTable<View1Poco>();
 
 
         /// <summary>
-        /// <para>Database function 'say_hello'.</para>        
+        /// <para>Database function 'increment_by_one'.</para>
         /// </summary>
-        [Sql.Function(ServerSideOnly = true)]
-        public static string SayHello(string name, int? age) => throw new NotImplementedException();        
+        [Sql.Function(ServerSideOnly = true, Name = "increment_by_one")]
+        public static int? IncrementByOne(int? num) => throw new NotImplementedException();        
 
         public ILinqProvider LinqProvider { private get; set; }
     }
@@ -3528,6 +3614,11 @@ namespace PgNet.Generated
         public static IQueryable<Test2CM> SelectCm(this IQueryable<Test2Poco> collection) => collection.SelectCm<Test2Poco, Test2CM>();
 
         /// <summary>
+        /// <para>Database table 'v_generate_series'.</para>
+        /// </summary>
+        public static IQueryable<VGenerateSeriesCM> SelectCm(this IQueryable<VGenerateSeriesPoco> collection) => collection.SelectCm<VGenerateSeriesPoco, VGenerateSeriesCM>();
+
+        /// <summary>
         /// <para>Database table 'view1'.</para>
         /// </summary>
         public static IQueryable<View1CM> SelectCm(this IQueryable<View1Poco> collection) => collection.SelectCm<View1Poco, View1CM>();
@@ -3539,6 +3630,8 @@ namespace PgNet.Generated
         internal static TableMetadataModel<Test1Poco> Test1PocoMetadata;
 
         internal static TableMetadataModel<Test2Poco> Test2PocoMetadata;
+
+        internal static TableMetadataModel<VGenerateSeriesPoco> VGenerateSeriesPocoMetadata;
 
         internal static TableMetadataModel<View1Poco> View1PocoMetadata;
 
@@ -4534,6 +4627,56 @@ namespace PgNet.Generated
             Test2PocoMetadata.GetAllColumns = DbCodeGenerator.GetGetAllColumns(Test2PocoMetadata);
             Test2PocoMetadata.ParseFm = DbCodeGenerator.GetParseFm(Test2PocoMetadata, typeof(Test2FM));
 
+            VGenerateSeriesPocoMetadata = new TableMetadataModel<VGenerateSeriesPoco>
+            {
+                ClassName = "VGenerateSeries",
+                PluralClassName = "VGenerateSeries",
+                TableName = "v_generate_series",
+                TableSchema = "public",
+                Columns = new List<ColumnMetadataModel>
+                {
+                    new ColumnMetadataModel
+                    {
+                        ColumnComment = "" == string.Empty ? null : "",
+                        Comments = "".Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries),
+                        ColumnName = "num",
+                        DbDataType = "integer",
+                        IsNullable = bool.Parse("True"),
+                        IsPrimaryKey = bool.Parse("False"),
+                        PrimaryKeyConstraintName = "" == string.Empty ? null : "",
+                        IsForeignKey = bool.Parse("False"),
+                        ForeignKeyConstraintName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceColumnName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceSchemaName = "" == string.Empty ? null : "",
+                        ForeignKeyReferenceTableName = "" == string.Empty ? null : "",
+                        PropertyName = "Num",
+                        TableName = "v_generate_series",
+                        TableSchema = "public",
+                        PropertyType = new SimpleType
+                        {
+                            ClrTypeName = "int?",
+                            ClrType = typeof(int?),
+                            ClrNonNullableTypeName = "int",
+                            ClrNonNullableType = typeof(int),
+                            ClrNullableTypeName = "int?",
+                            ClrNullableType = typeof(int?),
+                            DbDataType = "integer",
+                            IsNullable = bool.Parse("True"),
+                            IsClrValueType = bool.Parse("True"),
+                            IsClrNullableType = bool.Parse("True"),
+                            IsClrReferenceType = bool.Parse("True"),
+                            Linq2DbDataTypeName = "DataType.Int32",
+                            Linq2DbDataType = DataType.Int32,
+                            NpgsqlDbTypeName = "NpgsqlDbType.Integer",
+                            NpgsqlDbType = NpgsqlDbType.Integer,
+                        }
+                    },
+                }
+            };
+
+            VGenerateSeriesPocoMetadata.Clone = DbCodeGenerator.GetClone<VGenerateSeriesPoco>();
+            VGenerateSeriesPocoMetadata.ParseFm = DbCodeGenerator.GetParseFm(VGenerateSeriesPocoMetadata, typeof(VGenerateSeriesFM));
+
             View1PocoMetadata = new TableMetadataModel<View1Poco>
             {
                 ClassName = "View1",
@@ -5488,50 +5631,32 @@ namespace PgNet.Generated
             Functions.Add(new FunctionMetadataModel
             {
                 SchemaName = "public" == string.Empty ? null : "public",
-                FunctionName = "say_hello" == string.Empty ? null : "say_hello",
-                MethodName = "SayHello" == string.Empty ? null : "SayHello",
-                FunctionReturnTypeName = "text" == string.Empty ? null : "text",
-                FunctionComment = "Returns catspeak." == string.Empty ? null : "Returns catspeak.",
-                FunctionArgumentsAsString = "name text, age integer" == string.Empty ? null : "name text, age integer",
+                FunctionName = "increment_by_one" == string.Empty ? null : "increment_by_one",
+                MethodName = "IncrementByOne" == string.Empty ? null : "IncrementByOne",
+                FunctionReturnTypeName = "int4" == string.Empty ? null : "int4",
+                FunctionComment = "" == string.Empty ? null : "",
+                FunctionArgumentsAsString = "num integer" == string.Empty ? null : "num integer",
                 FunctionReturnType = new SimpleType
                 {
-                    ClrTypeName = "string",
-                    ClrType = typeof(string),
-                    ClrNonNullableTypeName = "string",
-                    ClrNonNullableType = typeof(string),
-                    ClrNullableTypeName = "string",
-                    ClrNullableType = typeof(string),
-                    DbDataType = "text",
+                    ClrTypeName = "int?",
+                    ClrType = typeof(int?),
+                    ClrNonNullableTypeName = "int",
+                    ClrNonNullableType = typeof(int),
+                    ClrNullableTypeName = "int?",
+                    ClrNullableType = typeof(int?),
+                    DbDataType = "int4",
                     IsNullable = bool.Parse("True"),
-                    IsClrValueType = bool.Parse("False"),
-                    IsClrNullableType = bool.Parse("False"),
+                    IsClrValueType = bool.Parse("True"),
+                    IsClrNullableType = bool.Parse("True"),
                     IsClrReferenceType = bool.Parse("True"),
-                    Linq2DbDataTypeName = "DataType.Text",
-                    Linq2DbDataType = DataType.Text,
-                    NpgsqlDbTypeName = "NpgsqlDbType.Text",
-                    NpgsqlDbType = NpgsqlDbType.Text,
+                    Linq2DbDataTypeName = "DataType.Int32",
+                    Linq2DbDataType = DataType.Int32,
+                    NpgsqlDbTypeName = "NpgsqlDbType.Integer",
+                    NpgsqlDbType = NpgsqlDbType.Integer,
                 },
                 FunctionArguments = new Dictionary<string, SimpleType>
                 {
-                    { "name", new SimpleType 
-                    {
-                        ClrTypeName = "string",
-                        ClrType = typeof(string),
-                        ClrNonNullableTypeName = "string",
-                        ClrNonNullableType = typeof(string),
-                        ClrNullableTypeName = "string",
-                        ClrNullableType = typeof(string),
-                        DbDataType = "text",
-                        IsNullable = bool.Parse("True"),
-                        IsClrValueType = bool.Parse("False"),
-                        IsClrNullableType = bool.Parse("False"),
-                        IsClrReferenceType = bool.Parse("True"),
-                        Linq2DbDataTypeName = "DataType.Text",
-                        Linq2DbDataType = DataType.Text,
-                        NpgsqlDbTypeName = "NpgsqlDbType.Text",
-                        NpgsqlDbType = NpgsqlDbType.Text,
-                    }},
-                    { "age", new SimpleType 
+                    { "num", new SimpleType 
                     {
                         ClrTypeName = "int?",
                         ClrType = typeof(int?),

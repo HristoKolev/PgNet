@@ -702,6 +702,87 @@ namespace PgNet.Generated
         }
     }
 
+    public class VGenerateSeriesTest : DatabaseTest
+    {
+        [Fact]
+        public async Task SelectCmDry()
+        {
+            await this.Db.Poco.VGenerateSeries.ToArrayAsync();
+            await this.Db.Poco.VGenerateSeries.SelectCm<VGenerateSeriesPoco, VGenerateSeriesCM>().ToArrayAsync();
+        }
+
+        [Theory]
+        [ClassData(typeof(GeneratedFilterData<VGenerateSeriesPoco, VGenerateSeriesFM>))]
+        public async Task FilterQueryable(VGenerateSeriesFM filter)
+        {
+            await this.Db.GetTable<VGenerateSeriesPoco>().Filter(filter).ToArrayAsync();
+        }
+
+        [Theory]
+        [ClassData(typeof(GeneratedData<VGenerateSeriesPoco>))]
+        public void Getters(VGenerateSeriesPoco poco)
+        {
+            var getters = DbCodeGenerator.GenerateGetters<VGenerateSeriesPoco>();
+
+            Assert.Equal(poco.Num, getters["num"](poco));
+        }
+
+        [Theory]
+        [ClassData(typeof(GeneratedData<VGenerateSeriesPoco>))]
+        public void Setters(VGenerateSeriesPoco poco)
+        {
+            var setters = DbCodeGenerator.GenerateSetters<VGenerateSeriesPoco>();
+
+            var newObj = new VGenerateSeriesPoco();
+
+            setters["num"](newObj, poco.Num);
+            Assert.Equal(poco.Num, newObj.Num);
+
+        }
+
+        [Theory]
+        [ClassData(typeof(GeneratedData<VGenerateSeriesPoco>))]
+        public void Clone(VGenerateSeriesPoco poco)
+        {
+            var clone = DbMetadata.VGenerateSeriesPocoMetadata.Clone;
+
+            var newObj = clone(poco);
+
+            Assert.NotEqual(poco, newObj);
+
+            Assert.Equal(poco.Num, newObj.Num);
+        }
+
+        [Theory]
+        [ClassData(typeof(GeneratedFilterData<VGenerateSeriesPoco, VGenerateSeriesFM>))]
+        public void ParseFm(VGenerateSeriesFM filter)
+        {
+            var properties = typeof(VGenerateSeriesFM).GetProperties().Where(x => x.GetValue(filter) != null);
+            var attributes = properties.Select(x => x.GetCustomAttribute<FilterOperatorAttribute>()).ToList();
+
+            var expectedNames = attributes.Select(x => x.ColumnName).ToList();
+            var expectedOperators = attributes.Select(x => x.QueryOperatorType).ToList();
+            var expectedValues = properties.Select(x =>
+                {
+                    var attr = x.GetCustomAttribute<FilterOperatorAttribute>();
+
+                    if (attr.QueryOperatorType    == QueryOperatorType.IsNull
+                        || attr.QueryOperatorType == QueryOperatorType.IsNotNull)
+                    {
+                        return null;
+                    }
+
+                    return x.GetValue(filter);
+                }).ToList();
+
+            var (columnNames, columnParameters, operators) = DbMetadata.VGenerateSeriesPocoMetadata.ParseFm(filter);
+
+            Assert.Equal(expectedNames, columnNames);
+            Assert.Equal(expectedOperators, operators);
+            Assert.Equal(expectedValues, columnParameters.Select(x => x?.Value).ToList());
+        }
+    }
+
     public class View1Test : DatabaseTest
     {
         [Fact]

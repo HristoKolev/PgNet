@@ -98,6 +98,20 @@
         }
     }
 
+    public class RangeData : IEnumerable<object[]>
+    {
+        public IEnumerator<object[]> GetEnumerator()
+        {
+            return Enumerable.Range(0, 10)
+                             .Select(x => new Object[] { x }).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
+    }
+
     public class PocoDataGenerator
     {
         private const int RandomSeed = 938274923;
