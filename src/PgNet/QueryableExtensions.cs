@@ -145,17 +145,14 @@
     public static class FilterExpressionGenerator
     {
         private static readonly MethodInfo StringStartsWithMethod = typeof(string).GetMethod(nameof(string.StartsWith), new[] { typeof(string) });
-
+        
         private static readonly MethodInfo StringEndsWithMethod = typeof(string).GetMethod(nameof(string.EndsWith), new[] { typeof(string) });
-
+        
         private static readonly MethodInfo StringContainsMethod = typeof(string).GetMethod(nameof(string.Contains), new[] { typeof(string) });
         
-        private static readonly MethodInfo StringToLowerMethod = typeof(string)
-            .GetMethod(nameof(string.ToLower), Array.Empty<Type>());
-
-        private static readonly MethodInfo EnumerableContainsMethod = typeof(Enumerable)
-                                                                      .GetMethods()
-                                                                      .First(x => x.Name == nameof(Enumerable.Contains) && x.GetParameters().Length == 2);
+        private static readonly MethodInfo StringToLowerMethod = typeof(string).GetMethod(nameof(string.ToLower), Array.Empty<Type>());
+        
+        private static readonly MethodInfo EnumerableContainsMethod = typeof(Enumerable).GetMethods().First(x => x.Name == nameof(Enumerable.Contains) && x.GetParameters().Length == 2);
 
         public static Expression<Func<TPoco, bool>> CreateFilterExpression<TPoco>(object filter)
         {
