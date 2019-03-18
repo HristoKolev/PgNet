@@ -1,25 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>        
-        <LangVersion>latest</LangVersion>        
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
         <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 
-        <Version>1.0.1</Version>
-        <VersionPrefix>1.0.1</VersionPrefix>
+        <Version>1.0.2</Version>
+        <VersionPrefix>1.0.2</VersionPrefix>
 
         <Title>.NET Core ORM specially designed to work with PostgreSQL</Title>
         <Description>.NET Core ORM specially designed to work with PostgreSQL</Description>
-        <Authors>Hristo Kolev</Authors>        
+        <Authors>Hristo Kolev</Authors>
         <PackageProjectUrl>https://github.com/HristoKolev/PgNet</PackageProjectUrl>
         <PackageLicenseUrl>https://github.com/HristoKolev/PgNet/blob/master/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>git@github.com:HristoKolev/PgNet.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>orm, postgresql</PackageTags>
     </PropertyGroup>
-      
+
     <ItemGroup>
         <PackageReference Include="linq2db.Core" Version="1.10.2" />
-        <PackageReference Include="Npgsql" Version="4.0.4" />
+        <PackageReference Include="Npgsql" Version="4.0.5" />
     </ItemGroup>
 </Project>
