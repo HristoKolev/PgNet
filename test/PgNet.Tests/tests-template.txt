@@ -63,21 +63,6 @@ namespace @Model.Namespace
         @:}
 @:
         @:[Theory]
-        @:[ClassData(typeof(GeneratedData<@(table.ClassName)Poco>))]
-        @:public async Task SelectCm(@(table.ClassName)Poco poco)
-        @:{
-            @:await this.Db.Insert(poco);
-@:
-            @:var pocoFromDb = await this.Db.Poco.@(table.ClassName).FirstAsync();
-            @:var cmFromDb = await this.Db.Poco.@(table.ClassName).SelectCm<@(table.ClassName)Poco, @(table.ClassName)CM>().FirstAsync();
-@:
-        @foreach(var column in table.Columns)
-        {
-            @:Assert.Equal(pocoFromDb.@(column.PropertyName), cmFromDb.@(column.PropertyName));
-        }
-        @:}
-@:
-        @:[Theory]
         @:[ClassData(typeof(GeneratedBulkData<@(table.ClassName)Poco>))]
         @:public async Task BulkInsert(List<@(table.ClassName)Poco> poco)
         @:{
@@ -199,12 +184,6 @@ namespace @Model.Namespace
         @:}
 @:
     }
-        @:[Fact]
-        @:public async Task SelectCmDry()
-        @:{
-            @:await this.Db.Poco.@(table.ClassName).ToArrayAsync();
-            @:await this.Db.Poco.@(table.ClassName).SelectCm<@(table.ClassName)Poco, @(table.ClassName)CM>().ToArrayAsync();
-        @:}
 @:
         @:[Theory]
         @:[ClassData(typeof(GeneratedFilterData<@(table.ClassName)Poco, @(table.ClassName)FM>))]

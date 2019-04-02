@@ -9,18 +9,6 @@
 
     public static class QueryableExtensions
     {
-        public static IQueryable<TCm> SelectCm<TPoco, TCm>(this IQueryable<TPoco> collection)
-            where TCm : ICatalogModel<TPoco>
-            where TPoco : IReadOnlyPoco<TPoco>
-        {
-            if (collection == null)
-            {
-                throw new ArgumentNullException(nameof(collection));
-            }
-
-            return collection.Select(MapExpressionGenerator.MapToCmExpression<TPoco, TCm>());
-        }
-
         public static IOrderedQueryable<TPoco> OrderByPrimaryKey<TPoco>(this IQueryable<TPoco> collection)
             where TPoco : IPoco<TPoco>, new()
         {

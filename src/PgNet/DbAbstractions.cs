@@ -329,14 +329,7 @@
 
         public NpgsqlDbType NpgsqlDbType { get; set; }
     }
-
-    /// <summary>
-    /// Interface for all Catalog models
-    /// </summary>
-    public interface ICatalogModel<T>
-    {
-    }
-
+    
     /// <summary>
     /// Interface for all Filter models
     /// </summary>
