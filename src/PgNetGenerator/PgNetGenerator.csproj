@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        
+        <PackAsTool>true</PackAsTool>
+        <ToolCommandName>pg-net-generator</ToolCommandName>
+        <AssemblyName>pg-net-generator</AssemblyName>
+        <RootNamespace>PgNetGenerator</RootNamespace>        
+        <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+
+        <Version>1.0.6</Version>
+        <VersionPrefix>1.0.6</VersionPrefix>
+        <PackageVersion>1.0.6</PackageVersion>
+        
+        <Description>A dotnet tool that generates code(or anything else) from Postgresql schema.</Description>
+        <Authors>HristoKolev</Authors>
+        <PackageProjectUrl>https://github.com/HristoKolev/PgNet</PackageProjectUrl>
+        <license>MIT</license>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>git://github.com/HristoKolev/PgNet</RepositoryUrl>
+    
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CommandLineParser" Version="2.7.82" />
+        <PackageReference Include="Humanizer.Core" Version="2.7.9" />
+        <PackageReference Include="Npgsql" Version="4.0.8" />
+        <PackageReference Include="RenderRazor" Version="1.0.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="packages\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="packages\**" />
+        <None Remove="get-relations.sql" />
+        <EmbeddedResource Include="get-relations.sql" />
+        <None Remove="relations-template.txt" />
+        <EmbeddedResource Include="relations-template.txt" />
+        <None Remove="get-functions.sql" />
+        <EmbeddedResource Include="get-functions.sql" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="packages\**" />
+    </ItemGroup>
+</Project>

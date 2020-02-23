@@ -378,11 +378,7 @@ namespace PgNet
             return connection.CreateParameter(parameterName, value, dbType);
         }
 
-        public static NpgsqlParameter CreateParameter<T>(
-            this NpgsqlConnection connection,
-            string parameterName, 
-            T value, 
-            NpgsqlDbType dbType)
+        public static NpgsqlParameter CreateParameter<T>(this NpgsqlConnection connection, string parameterName, T value, NpgsqlDbType dbType)
         {
             if (value == null)
             {
@@ -395,10 +391,7 @@ namespace PgNet
             };
         }
 
-        public static NpgsqlParameter CreateParameter(
-            this NpgsqlConnection connection,
-            string parameterName, 
-            object value)
+        public static NpgsqlParameter CreateParameter(this NpgsqlConnection connection, string parameterName, object value)
         {
             return new NpgsqlParameter(parameterName, value);
         }

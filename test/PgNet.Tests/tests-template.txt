@@ -43,42 +43,10 @@ namespace @Model.Namespace
         @:}
 @:
         @:[Theory]
-        @:[ClassData(typeof(GeneratedData<@(table.ClassName)Poco>))]
-        @:public async Task CrudNonPocoRead(@(table.ClassName)Poco poco)
-        @:{
-            @:int id = await this.Db.Insert(poco);
-@:
-            @:var readFromDb = await this.Db.QueryOne<@(table.ClassName)BM>("select * from @(table.TableName) where @(table.PrimaryKeyColumnName) = @@pk;", new NpgsqlParameter("pk", id));
-@:
-        @foreach(var column in table.Columns)
-        {
-            @:Assert.Equal(poco.@(column.PropertyName), readFromDb.@(column.PropertyName));
-        }
-@:
-            @:int updatedId = await this.Db.Update(poco);
-@:
-            @:Assert.Equal(id, updatedId);
-@:
-            @:await this.Db.Delete(poco);
-        @:}
-@:
-        @:[Theory]
         @:[ClassData(typeof(GeneratedBulkData<@(table.ClassName)Poco>))]
         @:public async Task BulkInsert(List<@(table.ClassName)Poco> poco)
         @:{
             @:await this.Db.BulkInsert(poco);
-        @:}
-@:
-        @:[Fact]
-        @:public async Task OrderByPrimaryKey()
-        @:{
-            @:await this.Db.GetTable<@(table.ClassName)Poco>().OrderByPrimaryKey().ToArrayAsync();
-        @:}
-@:
-        @:[Fact]
-        @:public async Task OrderByPrimaryKeyDescending()
-        @:{
-            @:await this.Db.GetTable<@(table.ClassName)Poco>().OrderByPrimaryKeyDescending().ToArrayAsync();
         @:}
 @:
         @:[Theory]
@@ -186,13 +154,6 @@ namespace @Model.Namespace
     }
 @:
         @:[Theory]
-        @:[ClassData(typeof(GeneratedFilterData<@(table.ClassName)Poco, @(table.ClassName)FM>))]
-        @:public async Task FilterQueryable(@(table.ClassName)FM filter)
-        @:{
-            @:await this.Db.GetTable<@(table.ClassName)Poco>().Filter(filter).ToArrayAsync();
-        @:}
-@:
-        @:[Theory]
         @:[ClassData(typeof(GeneratedData<@(table.ClassName)Poco>))]
         @:public void Getters(@(table.ClassName)Poco poco)
         @:{
@@ -234,35 +195,6 @@ namespace @Model.Namespace
         {
             @:Assert.Equal(poco.@(column.PropertyName), newObj.@(column.PropertyName));
         }
-        @:}
-@:
-        @:[Theory]
-        @:[ClassData(typeof(GeneratedFilterData<@(table.ClassName)Poco, @(table.ClassName)FM>))]
-        @:public void ParseFm(@(table.ClassName)FM filter)
-        @:{
-            @:var properties = typeof(@(table.ClassName)FM).GetProperties().Where(x => x.GetValue(filter) != null);
-            @:var attributes = properties.Select(x => x.GetCustomAttribute<FilterOperatorAttribute>()).ToList();
-@:
-            @:var expectedNames = attributes.Select(x => x.ColumnName).ToList();
-            @:var expectedOperators = attributes.Select(x => x.QueryOperatorType).ToList();
-            @:var expectedValues = properties.Select(x =>
-                @:{
-                    @:var attr = x.GetCustomAttribute<FilterOperatorAttribute>();
-@:
-                    @:if (attr.QueryOperatorType    == QueryOperatorType.IsNull
-                        @:|| attr.QueryOperatorType == QueryOperatorType.IsNotNull)
-                    @:{
-                        @:return null;
-                    @:}
-@:
-                    @:return x.GetValue(filter);
-                @:}).ToList();
-@:
-            @:var (columnNames, columnParameters, operators) = @(Model.MetadataClassName).@(table.ClassName)PocoMetadata.ParseFm(filter);
-@:
-            @:Assert.Equal(expectedNames, columnNames);
-            @:Assert.Equal(expectedOperators, operators);
-            @:Assert.Equal(expectedValues, columnParameters.Select(x => x?.Value).ToList());
         @:}
     @:}
 @:

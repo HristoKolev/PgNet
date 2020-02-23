@@ -199,12 +199,7 @@
         /// Returns the names of the changed columns and parameters for every column value.
         /// </summary>
         public Func<T, T, ValueTuple<List<string>, List<NpgsqlParameter>>> GetColumnChanges { get; set; }
-
-        /// <summary>
-        /// Returns the data needed to generate an expression from an <see cref="IFilterModel{TPoco}"/> instance.
-        /// </summary>
-        public Func<IFilterModel<T>, ValueTuple<List<string>, List<NpgsqlParameter>, List<QueryOperatorType>>> ParseFm { get; set; }
-
+        
         /// <summary>
         /// Writes the poco object to the binary importer.
         /// </summary>
@@ -212,7 +207,7 @@
     }
 
     /// <summary>
-    /// Represemts a table in PostgreSQL
+    /// Represents a table in PostgreSQL
     /// </summary>
     public class TableMetadataModel
     {
@@ -317,8 +312,6 @@
 
         public bool IsClrReferenceType { get; set; }
         
-        public string[] ValidOperators { get; set; }
-
         public Type ClrType { get; set; }
 
         public Type ClrNonNullableType { get; set; }
@@ -328,89 +321,6 @@
         public DataType Linq2DbDataType { get; set; }
 
         public NpgsqlDbType NpgsqlDbType { get; set; }
-    }
-    
-    /// <summary>
-    /// Interface for all Filter models
-    /// </summary>
-    public interface IFilterModel<T>
-    {
-    }
-
-    /// <summary>
-    /// Interface for all Business models
-    /// </summary>
-    public interface IBusinessModel<T>
-        where T : IPoco<T>
-    {
-        T ToPoco();
-    }
-
-    public enum QueryOperatorType
-    {
-        Equal,
-
-        NotEqual,
-
-        LessThan,
-
-        LessThanOrEqual,
-
-        GreaterThan,
-
-        GreaterThanOrEqual,
-        
-        StartsWith,
-        
-        DoesNotStartWith,
-        
-        EndsWith,
-        
-        DoesNotEndWith,
-        
-        Contains,
-        
-        DoesNotContain,
-        
-        StartsWithCaseSensitive,
-
-        DoesNotStartWithCaseSensitive,
-
-        EndsWithCaseSensitive,
-
-        DoesNotEndWithCaseSensitive,
-
-        ContainsCaseSensitive,
-
-        DoesNotContainCaseSensitive,
-
-        IsNull,
-
-        IsNotNull,
-
-        IsIn,
-
-        IsNotIn
-    }
-
-    [AttributeUsage(AttributeTargets.Property)]
-    public class FilterOperatorAttribute : Attribute
-    {
-        public FilterOperatorAttribute(QueryOperatorType queryOperatorType, string propertyName, NpgsqlDbType dbType, string columnName)
-        {
-            this.QueryOperatorType = queryOperatorType;
-            this.PropertyName = propertyName;
-            this.DbType = dbType;
-            this.ColumnName = columnName;
-        }
-
-        public string ColumnName { get; }
-
-        public string PropertyName { get; }
-
-        public NpgsqlDbType DbType { get; }
-
-        public QueryOperatorType QueryOperatorType { get; }
     }
 
     /// <summary>

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-package_dir="./packages";
+PACKAGE_DIR="./packages";
 
-if [ -d "$package_dir" ]; then
-rm $package_dir -rf
+if [ -d "$PACKAGE_DIR" ]; then
+    rm $PACKAGE_DIR -rf
 fi
 
-dotnet pack -c release -o "../../$package_dir" --include-symbols --include-source
- 
-nuget push -ApiKey $nuget_key -source https://api.nuget.org/v3/index.json "$package_dir/"
+dotnet pack -c release -o $PACKAGE_DIR --include-symbols --include-source
+
+dotnet nuget push $PACKAGE_DIR/**/*.nupkg -k $NUGET_KEY -s https://api.nuget.org/v3/index.json --skip-duplicate

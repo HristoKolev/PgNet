@@ -1,4 +1,4 @@
-namespace PgNet.Generated
+namespace PgNet.Tests
 {
     using System;
     using System.Collections.Generic;
@@ -56,61 +56,10 @@ namespace PgNet.Generated
         }
 
         [Theory]
-        [ClassData(typeof(GeneratedData<Test1Poco>))]
-        public async Task CrudNonPocoRead(Test1Poco poco)
-        {
-            int id = await this.Db.Insert(poco);
-
-            var readFromDb = await this.Db.QueryOne<Test1BM>("select * from test1 where test_id = @pk;", new NpgsqlParameter("pk", id));
-
-            Assert.Equal(poco.TestBigint1, readFromDb.TestBigint1);
-            Assert.Equal(poco.TestBigint2, readFromDb.TestBigint2);
-            Assert.Equal(poco.TestBoolean1, readFromDb.TestBoolean1);
-            Assert.Equal(poco.TestBoolean2, readFromDb.TestBoolean2);
-            Assert.Equal(poco.TestChar1, readFromDb.TestChar1);
-            Assert.Equal(poco.TestChar2, readFromDb.TestChar2);
-            Assert.Equal(poco.TestDate1, readFromDb.TestDate1);
-            Assert.Equal(poco.TestDate2, readFromDb.TestDate2);
-            Assert.Equal(poco.TestDecimal1, readFromDb.TestDecimal1);
-            Assert.Equal(poco.TestDecimal2, readFromDb.TestDecimal2);
-            Assert.Equal(poco.TestDouble1, readFromDb.TestDouble1);
-            Assert.Equal(poco.TestDouble2, readFromDb.TestDouble2);
-            Assert.Equal(poco.TestID, readFromDb.TestID);
-            Assert.Equal(poco.TestInteger1, readFromDb.TestInteger1);
-            Assert.Equal(poco.TestInteger2, readFromDb.TestInteger2);
-            Assert.Equal(poco.TestName1, readFromDb.TestName1);
-            Assert.Equal(poco.TestName2, readFromDb.TestName2);
-            Assert.Equal(poco.TestReal1, readFromDb.TestReal1);
-            Assert.Equal(poco.TestReal2, readFromDb.TestReal2);
-            Assert.Equal(poco.TestText1, readFromDb.TestText1);
-            Assert.Equal(poco.TestText2, readFromDb.TestText2);
-            Assert.Equal(poco.TestTimestamp1, readFromDb.TestTimestamp1);
-            Assert.Equal(poco.TestTimestamp2, readFromDb.TestTimestamp2);
-
-            int updatedId = await this.Db.Update(poco);
-
-            Assert.Equal(id, updatedId);
-
-            await this.Db.Delete(poco);
-        }
-
-        [Theory]
         [ClassData(typeof(GeneratedBulkData<Test1Poco>))]
         public async Task BulkInsert(List<Test1Poco> poco)
         {
             await this.Db.BulkInsert(poco);
-        }
-
-        [Fact]
-        public async Task OrderByPrimaryKey()
-        {
-            await this.Db.GetTable<Test1Poco>().OrderByPrimaryKey().ToArrayAsync();
-        }
-
-        [Fact]
-        public async Task OrderByPrimaryKeyDescending()
-        {
-            await this.Db.GetTable<Test1Poco>().OrderByPrimaryKeyDescending().ToArrayAsync();
         }
 
         [Theory]
@@ -215,13 +164,6 @@ namespace PgNet.Generated
             this.Db.Copy(pocos);
         }
 
-
-        [Theory]
-        [ClassData(typeof(GeneratedFilterData<Test1Poco, Test1FM>))]
-        public async Task FilterQueryable(Test1FM filter)
-        {
-            await this.Db.GetTable<Test1Poco>().Filter(filter).ToArrayAsync();
-        }
 
         [Theory]
         [ClassData(typeof(GeneratedData<Test1Poco>))]
@@ -367,35 +309,6 @@ namespace PgNet.Generated
             Assert.Equal(poco.TestTimestamp1, newObj.TestTimestamp1);
             Assert.Equal(poco.TestTimestamp2, newObj.TestTimestamp2);
         }
-
-        [Theory]
-        [ClassData(typeof(GeneratedFilterData<Test1Poco, Test1FM>))]
-        public void ParseFm(Test1FM filter)
-        {
-            var properties = typeof(Test1FM).GetProperties().Where(x => x.GetValue(filter) != null);
-            var attributes = properties.Select(x => x.GetCustomAttribute<FilterOperatorAttribute>()).ToList();
-
-            var expectedNames = attributes.Select(x => x.ColumnName).ToList();
-            var expectedOperators = attributes.Select(x => x.QueryOperatorType).ToList();
-            var expectedValues = properties.Select(x =>
-                {
-                    var attr = x.GetCustomAttribute<FilterOperatorAttribute>();
-
-                    if (attr.QueryOperatorType    == QueryOperatorType.IsNull
-                        || attr.QueryOperatorType == QueryOperatorType.IsNotNull)
-                    {
-                        return null;
-                    }
-
-                    return x.GetValue(filter);
-                }).ToList();
-
-            var (columnNames, columnParameters, operators) = DbMetadata.Test1PocoMetadata.ParseFm(filter);
-
-            Assert.Equal(expectedNames, columnNames);
-            Assert.Equal(expectedOperators, operators);
-            Assert.Equal(expectedValues, columnParameters.Select(x => x?.Value).ToList());
-        }
     }
 
     public class Test2Test : DatabaseTest
@@ -420,41 +333,10 @@ namespace PgNet.Generated
         }
 
         [Theory]
-        [ClassData(typeof(GeneratedData<Test2Poco>))]
-        public async Task CrudNonPocoRead(Test2Poco poco)
-        {
-            int id = await this.Db.Insert(poco);
-
-            var readFromDb = await this.Db.QueryOne<Test2BM>("select * from test2 where test_id = @pk;", new NpgsqlParameter("pk", id));
-
-            Assert.Equal(poco.TestDate, readFromDb.TestDate);
-            Assert.Equal(poco.TestID, readFromDb.TestID);
-            Assert.Equal(poco.TestName, readFromDb.TestName);
-
-            int updatedId = await this.Db.Update(poco);
-
-            Assert.Equal(id, updatedId);
-
-            await this.Db.Delete(poco);
-        }
-
-        [Theory]
         [ClassData(typeof(GeneratedBulkData<Test2Poco>))]
         public async Task BulkInsert(List<Test2Poco> poco)
         {
             await this.Db.BulkInsert(poco);
-        }
-
-        [Fact]
-        public async Task OrderByPrimaryKey()
-        {
-            await this.Db.GetTable<Test2Poco>().OrderByPrimaryKey().ToArrayAsync();
-        }
-
-        [Fact]
-        public async Task OrderByPrimaryKeyDescending()
-        {
-            await this.Db.GetTable<Test2Poco>().OrderByPrimaryKeyDescending().ToArrayAsync();
         }
 
         [Theory]
@@ -561,13 +443,6 @@ namespace PgNet.Generated
 
 
         [Theory]
-        [ClassData(typeof(GeneratedFilterData<Test2Poco, Test2FM>))]
-        public async Task FilterQueryable(Test2FM filter)
-        {
-            await this.Db.GetTable<Test2Poco>().Filter(filter).ToArrayAsync();
-        }
-
-        [Theory]
         [ClassData(typeof(GeneratedData<Test2Poco>))]
         public void Getters(Test2Poco poco)
         {
@@ -611,46 +486,10 @@ namespace PgNet.Generated
             Assert.Equal(poco.TestID, newObj.TestID);
             Assert.Equal(poco.TestName, newObj.TestName);
         }
-
-        [Theory]
-        [ClassData(typeof(GeneratedFilterData<Test2Poco, Test2FM>))]
-        public void ParseFm(Test2FM filter)
-        {
-            var properties = typeof(Test2FM).GetProperties().Where(x => x.GetValue(filter) != null);
-            var attributes = properties.Select(x => x.GetCustomAttribute<FilterOperatorAttribute>()).ToList();
-
-            var expectedNames = attributes.Select(x => x.ColumnName).ToList();
-            var expectedOperators = attributes.Select(x => x.QueryOperatorType).ToList();
-            var expectedValues = properties.Select(x =>
-                {
-                    var attr = x.GetCustomAttribute<FilterOperatorAttribute>();
-
-                    if (attr.QueryOperatorType    == QueryOperatorType.IsNull
-                        || attr.QueryOperatorType == QueryOperatorType.IsNotNull)
-                    {
-                        return null;
-                    }
-
-                    return x.GetValue(filter);
-                }).ToList();
-
-            var (columnNames, columnParameters, operators) = DbMetadata.Test2PocoMetadata.ParseFm(filter);
-
-            Assert.Equal(expectedNames, columnNames);
-            Assert.Equal(expectedOperators, operators);
-            Assert.Equal(expectedValues, columnParameters.Select(x => x?.Value).ToList());
-        }
     }
 
     public class VGenerateSeriesTest : DatabaseTest
     {
-
-        [Theory]
-        [ClassData(typeof(GeneratedFilterData<VGenerateSeriesPoco, VGenerateSeriesFM>))]
-        public async Task FilterQueryable(VGenerateSeriesFM filter)
-        {
-            await this.Db.GetTable<VGenerateSeriesPoco>().Filter(filter).ToArrayAsync();
-        }
 
         [Theory]
         [ClassData(typeof(GeneratedData<VGenerateSeriesPoco>))]
@@ -686,46 +525,10 @@ namespace PgNet.Generated
 
             Assert.Equal(poco.Num, newObj.Num);
         }
-
-        [Theory]
-        [ClassData(typeof(GeneratedFilterData<VGenerateSeriesPoco, VGenerateSeriesFM>))]
-        public void ParseFm(VGenerateSeriesFM filter)
-        {
-            var properties = typeof(VGenerateSeriesFM).GetProperties().Where(x => x.GetValue(filter) != null);
-            var attributes = properties.Select(x => x.GetCustomAttribute<FilterOperatorAttribute>()).ToList();
-
-            var expectedNames = attributes.Select(x => x.ColumnName).ToList();
-            var expectedOperators = attributes.Select(x => x.QueryOperatorType).ToList();
-            var expectedValues = properties.Select(x =>
-                {
-                    var attr = x.GetCustomAttribute<FilterOperatorAttribute>();
-
-                    if (attr.QueryOperatorType    == QueryOperatorType.IsNull
-                        || attr.QueryOperatorType == QueryOperatorType.IsNotNull)
-                    {
-                        return null;
-                    }
-
-                    return x.GetValue(filter);
-                }).ToList();
-
-            var (columnNames, columnParameters, operators) = DbMetadata.VGenerateSeriesPocoMetadata.ParseFm(filter);
-
-            Assert.Equal(expectedNames, columnNames);
-            Assert.Equal(expectedOperators, operators);
-            Assert.Equal(expectedValues, columnParameters.Select(x => x?.Value).ToList());
-        }
     }
 
     public class View1Test : DatabaseTest
     {
-
-        [Theory]
-        [ClassData(typeof(GeneratedFilterData<View1Poco, View1FM>))]
-        public async Task FilterQueryable(View1FM filter)
-        {
-            await this.Db.GetTable<View1Poco>().Filter(filter).ToArrayAsync();
-        }
 
         [Theory]
         [ClassData(typeof(GeneratedData<View1Poco>))]
@@ -885,35 +688,6 @@ namespace PgNet.Generated
             Assert.Equal(poco.TestText2, newObj.TestText2);
             Assert.Equal(poco.TestTimestamp1, newObj.TestTimestamp1);
             Assert.Equal(poco.TestTimestamp2, newObj.TestTimestamp2);
-        }
-
-        [Theory]
-        [ClassData(typeof(GeneratedFilterData<View1Poco, View1FM>))]
-        public void ParseFm(View1FM filter)
-        {
-            var properties = typeof(View1FM).GetProperties().Where(x => x.GetValue(filter) != null);
-            var attributes = properties.Select(x => x.GetCustomAttribute<FilterOperatorAttribute>()).ToList();
-
-            var expectedNames = attributes.Select(x => x.ColumnName).ToList();
-            var expectedOperators = attributes.Select(x => x.QueryOperatorType).ToList();
-            var expectedValues = properties.Select(x =>
-                {
-                    var attr = x.GetCustomAttribute<FilterOperatorAttribute>();
-
-                    if (attr.QueryOperatorType    == QueryOperatorType.IsNull
-                        || attr.QueryOperatorType == QueryOperatorType.IsNotNull)
-                    {
-                        return null;
-                    }
-
-                    return x.GetValue(filter);
-                }).ToList();
-
-            var (columnNames, columnParameters, operators) = DbMetadata.View1PocoMetadata.ParseFm(filter);
-
-            Assert.Equal(expectedNames, columnNames);
-            Assert.Equal(expectedOperators, operators);
-            Assert.Equal(expectedValues, columnParameters.Select(x => x?.Value).ToList());
         }
     }
 

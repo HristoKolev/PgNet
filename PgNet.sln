@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DA3F4760-3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PgNet.Tests", "test\PgNet.Tests\PgNet.Tests.csproj", "{112B8C65-9196-4FDD-BCC3-C1DABC298B8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PgNetGenerator", "src\PgNetGenerator\PgNetGenerator.csproj", "{E5476F0E-2B12-487C-A1EF-6B3754F57797}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,6 +18,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{9FC718A4-66B6-4606-90FF-3BA57426055B} = {82CB75CB-2668-4371-8219-FEA161A2B9D1}
 		{112B8C65-9196-4FDD-BCC3-C1DABC298B8D} = {DA3F4760-3C94-45BA-BE97-B43D4D896BE8}
+		{E5476F0E-2B12-487C-A1EF-6B3754F57797} = {82CB75CB-2668-4371-8219-FEA161A2B9D1}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9FC718A4-66B6-4606-90FF-3BA57426055B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -26,5 +29,9 @@ Global
 		{112B8C65-9196-4FDD-BCC3-C1DABC298B8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{112B8C65-9196-4FDD-BCC3-C1DABC298B8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{112B8C65-9196-4FDD-BCC3-C1DABC298B8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5476F0E-2B12-487C-A1EF-6B3754F57797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5476F0E-2B12-487C-A1EF-6B3754F57797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5476F0E-2B12-487C-A1EF-6B3754F57797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5476F0E-2B12-487C-A1EF-6B3754F57797}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

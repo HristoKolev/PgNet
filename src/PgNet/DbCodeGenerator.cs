@@ -41,7 +41,7 @@ namespace PgNet
 
             if (!property.IsAutoImplemented())
             {
-                throw new ApplicationException($"The propety `{property.Name}` of type `{instanceType.Name}` is not autoimplemented.");
+                throw new ApplicationException($"The property `{property.Name}` of type `{instanceType.Name}` is not auto implemented.");
             }
 
             return arg => property.GetBackingField().GetValue(arg);
@@ -55,7 +55,7 @@ namespace PgNet
 
             if (!property.IsAutoImplemented())
             {
-                throw new ApplicationException($"The propety `{property.Name}` of type `{instanceType.Name}` is not autoimplemented.");
+                throw new ApplicationException($"The property `{property.Name}` of type `{instanceType.Name}` is not auto implemented.");
             }
 
             return (obj, value) => property.GetBackingField().SetValue(obj, value);
@@ -207,45 +207,13 @@ namespace PgNet
                 return (names, parameters);
             };
         }
-
-        public static Func<IFilterModel<TPoco>, ValueTuple<List<string>, List<NpgsqlParameter>, List<QueryOperatorType>>> GetParseFm<TPoco>(
-            TableMetadataModel<TPoco> metadata,
-            Type fmType)
-            where TPoco : IReadOnlyPoco<TPoco>
-        {
-            return model =>
-            {
-                var properties = fmType.GetProperties().Where(x => x.GetValue(model) != null);
-                var attributes = properties.Select(x => x.GetCustomAttribute<FilterOperatorAttribute>()).ToList();
-
-                var names = attributes.Select(x => x.ColumnName).ToList();
-                var operators = attributes.Select(x => x.QueryOperatorType).ToList();
-                var parameters = properties.Select(x =>
-                {
-                    var attr = x.GetCustomAttribute<FilterOperatorAttribute>();
-
-                    if (attr.QueryOperatorType == QueryOperatorType.IsNull
-                        || attr.QueryOperatorType == QueryOperatorType.IsNotNull)
-                    {
-                        return null;
-                    }
-                    
-                    return new NpgsqlParameter
-                    {
-                        Value = x.GetValue(model),
-                        NpgsqlDbType = x.PropertyType.IsArray ? NpgsqlDbType.Array | attr.DbType : attr.DbType
-                    };
-                }).ToList();
-
-                return (names, parameters, operators);
-            };
-        }
-
+        
         public static Dictionary<string, Action<T, object>> GenerateSetters<T>(Func<string, string> propertyNameToColumnName)
         {
             Dictionary<string, Action<T, object>> ValueFactory(Type type)
             {
                 return type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                           .Where(x => x.SetMethod != null)
                            .ToDictionary(x => propertyNameToColumnName(x.Name), x => GetSetter<T>(x.Name));
             }
 
@@ -273,8 +241,11 @@ namespace PgNet
         /// Examples:
         /// SystemSettingName => system_setting_name
         /// SystemSettingID => system_setting_id 
+        /// System_Setting_ID => system_setting_id
+        /// system_setting_id => system_setting_id
+        /// FK_Reference_Schema_Name => fk_reference_schema_name
         /// </summary>
-        public static string DefaultPropertyNameToColumnName(string propertyName)
+        private static string DefaultPropertyNameToColumnName(string propertyName)
         {
             var sb = new StringBuilder();
 
@@ -282,18 +253,52 @@ namespace PgNet
 
             for (int i = 1; i < propertyName.Length; i++)
             {
+                bool nextIs(Func<char, bool> func)
+                {
+                    if (i + 1 >= propertyName.Length)
+                    {
+                        return false;
+                    }
+
+                    char nextChar = propertyName[i + 1];
+
+                    return func(nextChar);
+                }
+
+                bool prevIs(Func<char, bool> func)
+                {
+                    if (i - 1 < 0)
+                    {
+                        return false;
+                    }
+
+                    char prevChar = propertyName[i - 1];
+
+                    return func(prevChar);
+                }
+
                 char c = propertyName[i];
 
-                if (c == 'I' && i + 1 < propertyName.Length && propertyName[i + 1] == 'D')
+                if (c == 'I' && nextIs(x => x == 'D'))
                 {
-                    sb.Append("_id");
+                    sb.Append(prevIs(x => x == '_') ? "id" : "_id");
                     i++;
+                }
+                else if (c == '_')
+                {
+                    sb.Append('_');
                 }
                 else if (char.IsUpper(c))
                 {
-                    sb.Append('_');
+
+                    if (!prevIs(char.IsUpper) && !prevIs(x => x == '_'))
+                    {
+                        sb.Append('_');
+                    }
+
                     sb.Append(char.ToLower(c));
                 }
+
                 else
                 {
                     sb.Append(c);

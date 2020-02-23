@@ -1,6 +1,5 @@
 ﻿namespace PgNet.Tests.Infrastructure
 {
-    using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
 
     using Npgsql;
@@ -12,7 +11,6 @@
         /// <summary>
         /// Called immediately after the class has been created, before it is used.
         /// </summary>
-        [SuppressMessage("ReSharper", "AsyncConverter.AsyncAwaitMayBeElidedHighlighting")]
         public async Task InitializeAsync()
         {
             this.Db = TestDbService.Create();
@@ -32,7 +30,6 @@
         /// Called when an object is no longer needed. Called just before <see cref="M:System.IDisposable.Dispose" />
         /// if the class also implements that.
         /// </summary>
-        [SuppressMessage("ReSharper", "AsyncConverter.AsyncAwaitMayBeElidedHighlighting")]
         public async Task DisposeAsync()
         {
             await this.Tx.RollbackAsync();

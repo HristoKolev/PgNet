@@ -20,7 +20,7 @@
             var sqlBuilder = new StringBuilder(128);
 
             // STATEMENT HEADER
-            sqlBuilder.Append($"INSERT INTO \"");
+            sqlBuilder.Append("INSERT INTO \"");
             sqlBuilder.Append(metadata.TableSchema);
             sqlBuilder.Append("\".\"");
             sqlBuilder.Append(metadata.TableName);
@@ -173,7 +173,7 @@
             var sqlBuilder = new StringBuilder(128);
 
             // STATEMENT HEADER
-            sqlBuilder.Append($"INSERT INTO \"");
+            sqlBuilder.Append("INSERT INTO \"");
             sqlBuilder.Append(metadata.TableSchema);
             sqlBuilder.Append("\".\"");
             sqlBuilder.Append(metadata.TableName);

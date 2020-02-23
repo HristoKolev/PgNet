@@ -1,7 +1,5 @@
 ﻿namespace PgNet.Tests.Infrastructure
 {
-    using Generated;
-
     using Npgsql;
 
     public class TestDbService : DbService<DbPocos>

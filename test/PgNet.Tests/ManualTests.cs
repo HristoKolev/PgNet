@@ -2,8 +2,6 @@ namespace PgNet.Tests
 {
     using System.Linq;
 
-    using Generated;
-
     using Infrastructure;
 
     using Xunit;
