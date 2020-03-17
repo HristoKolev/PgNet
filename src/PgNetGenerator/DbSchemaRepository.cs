@@ -177,7 +177,7 @@ namespace PgNetGenerator
             this.ClrNonNullableTypeName = this.ClrTypeName.Trim('?');
             this.ClrNullableTypeName = CodeGeneratorHelper.GetNullablePropertyType(dbDataType);
             this.Linq2DbDataTypeName = CodeGeneratorHelper.GetLinq2DbDataType(dbDataType);
-            this.NpgsqlDbTypeName = CodeGeneratorHelper.GetNpgsqlDbType(dbDataType).ToString();
+            this.NpgsqlDbTypeName = CodeGeneratorHelper.GetNpgsqlDbType(dbDataType).GetLiteral();
             
             this.IsClrValueType = this.ClrTypeName != "string";
             this.IsClrNullableType = this.ClrTypeName != "string" && isNullable;

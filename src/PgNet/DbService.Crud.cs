@@ -384,7 +384,7 @@
             return this.connection.QueryOne<T>(sql, parameters, cancellationToken);
         }
 
-        public void Copy<T>(IEnumerable<T> pocos)
+        public async Task Copy<T>(IEnumerable<T> pocos)
             where T : IPoco<T>
         {
             var metadata = DbCodeGenerator.GetMetadata<T>();
@@ -425,15 +425,16 @@
 
             copyHeaderBuilder.Append(") FROM STDIN (FORMAT BINARY)");
 
-            using (var importer = this.connection.BeginBinaryImport(copyHeaderBuilder.ToString()))
+            await using (var importer = this.connection.BeginBinaryImport(copyHeaderBuilder.ToString()))
             {
                 foreach (var poco in pocos)
                 {
-                    importer.StartRow();
+                    await importer.StartRowAsync();
+                    
                     metadata.WriteToImporter(importer, poco);
                 }
                 
-                importer.Complete();
+                await importer.CompleteAsync();
             }
         }
     }

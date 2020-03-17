@@ -5,6 +5,10 @@
         <OutputType>Library</OutputType>
         <LangVersion>latest</LangVersion>
         <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+
+        <Version>1.0.7</Version>
+        <VersionPrefix>1.0.7</VersionPrefix>
+        <PackageVersion>1.0.7</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>                

@@ -10,9 +10,9 @@
         <RootNamespace>PgNetGenerator</RootNamespace>        
         <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 
-        <Version>1.0.6</Version>
-        <VersionPrefix>1.0.6</VersionPrefix>
-        <PackageVersion>1.0.6</PackageVersion>
+        <Version>1.0.7</Version>
+        <VersionPrefix>1.0.7</VersionPrefix>
+        <PackageVersion>1.0.7</PackageVersion>
         
         <Description>A dotnet tool that generates code(or anything else) from Postgresql schema.</Description>
         <Authors>HristoKolev</Authors>

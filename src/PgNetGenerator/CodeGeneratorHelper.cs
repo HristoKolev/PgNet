@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Humanizer;
@@ -39,6 +40,8 @@ namespace PgNetGenerator
                 { "numeric", "decimal" },
                 { "timestamp with time zone", "DateTimeOffset" },
                 { "timestamp without time zone", "DateTime" },
+                
+                { "_int8", "long[]" },
             };
 
             Linq2DbDataTypesByDbDataTypes = new Dictionary<string, string>
@@ -77,6 +80,8 @@ namespace PgNetGenerator
                 { "hstore", "DataType.Dictionary" },
                 { "json", "DataType.Json" },
                 { "jsonb", "DataType.BinaryJson" },
+                
+                { "_int8", "DataType.Undefined" },
             };
 
             NpgsTypesByDatabaseTypes = new Dictionary<string, NpgsqlDbType>
@@ -129,6 +134,8 @@ namespace PgNetGenerator
                 { "int2vector", NpgsqlDbType.Int2Vector },
                 { "tid", NpgsqlDbType.Tid },
                 { "macaddr8", NpgsqlDbType.MacAddr8 },
+                
+                { "_int8", NpgsqlDbType.Bigint | NpgsqlDbType.Array },
             };
             
             TypesThatCanBeNullable = new List<string>
@@ -253,5 +260,25 @@ namespace PgNetGenerator
         }
 
         private static string Singularize(string word) => word.Singularize(false);
+    }
+
+    public static class TypeExtensions
+    {
+        public static string GetLiteral<T>(this T obj) where T : Enum
+        {
+            var objType = obj.GetType();
+            
+            var result = new List<T>();
+            
+            foreach (Enum value in Enum.GetValues(objType))
+            {
+                if (obj.HasFlag(value))
+                {
+                    result.Add((T)value);
+                }
+            }
+
+            return string.Join(" | ", result.Select(x => $"{objType.Name}.{x.ToString()}"));
+        }
     }
 }

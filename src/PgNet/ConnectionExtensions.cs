@@ -101,7 +101,7 @@ namespace PgNet
             {
                 await command.PrepareAsync(cancellationToken);
 
-                using (var reader = await command.ExecuteReaderAsync(cancellationToken))
+                await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
                 {
                     if (reader.FieldCount == 0)
                     {
@@ -176,7 +176,7 @@ namespace PgNet
             {
                 await command.PrepareAsync(cancellationToken);
 
-                using (var reader = await command.ExecuteReaderAsync(cancellationToken))
+                await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
                 {
                     var setters = DbCodeGenerator.GenerateSetters<T>();
 
@@ -244,7 +244,7 @@ namespace PgNet
             {
                 await command.PrepareAsync(cancellationToken);
 
-                using (var reader = await command.ExecuteReaderAsync(cancellationToken))
+                await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
                 {
                     var instance = new T();
 
@@ -291,7 +291,7 @@ namespace PgNet
         {
             await VerifyConnectionState(connection, cancellationToken);
 
-            using (var transaction = connection.BeginTransaction())
+            await using (var transaction = connection.BeginTransaction())
             {
                 if (cancellationToken == default)
                 {
@@ -328,7 +328,7 @@ namespace PgNet
         {
             await VerifyConnectionState(connection, cancellationToken);
 
-            using (var transaction = connection.BeginTransaction())
+            await using (var transaction = connection.BeginTransaction())
             {
                 if (cancellationToken == default)
                 {
