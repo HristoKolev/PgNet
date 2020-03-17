@@ -42,6 +42,7 @@ namespace PgNetGenerator
                 { "timestamp without time zone", "DateTime" },
                 
                 { "_int8", "long[]" },
+                { "bigint[]", "long[]" },
             };
 
             Linq2DbDataTypesByDbDataTypes = new Dictionary<string, string>
@@ -82,6 +83,7 @@ namespace PgNetGenerator
                 { "jsonb", "DataType.BinaryJson" },
                 
                 { "_int8", "DataType.Undefined" },
+                { "bigint[]", "DataType.Undefined" },
             };
 
             NpgsTypesByDatabaseTypes = new Dictionary<string, NpgsqlDbType>
@@ -136,6 +138,7 @@ namespace PgNetGenerator
                 { "macaddr8", NpgsqlDbType.MacAddr8 },
                 
                 { "_int8", NpgsqlDbType.Bigint | NpgsqlDbType.Array },
+                { "bigint[]", NpgsqlDbType.Bigint | NpgsqlDbType.Array },
             };
             
             TypesThatCanBeNullable = new List<string>
