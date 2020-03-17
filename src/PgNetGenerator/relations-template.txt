@@ -40,7 +40,7 @@ namespace @Model.Namespace
         }
         @:/// <para>This column is @(!column.PropertyType.IsNullable ? "not " : "")nullable.</para>
         @:/// <para>PostgreSQL data type: '@(column.PropertyType.DbDataType)'.</para>
-        @:/// <para>NpgsqlDbType: 'NpgsqlDbType.@(column.PropertyType.NpgsqlDbTypeName)'.</para>
+        @:/// <para>NpgsqlDbType: '@(column.PropertyType.NpgsqlDbTypeName)'.</para>
         @:/// <para>CLR type: '@(column.PropertyType.ClrTypeName)'.</para>
         @:/// <para>linq2db data type: '@(column.PropertyType.Linq2DbDataTypeName)'.</para>
         @:/// </summary>
@@ -149,8 +149,8 @@ namespace @Model.Namespace
                             @:IsClrReferenceType = bool.Parse("@(column.PropertyType.IsClrReferenceType)"),
                             @:Linq2DbDataTypeName = "@(column.PropertyType.Linq2DbDataTypeName)",
                             @:Linq2DbDataType = @(column.PropertyType.Linq2DbDataTypeName),
-                            @:NpgsqlDbTypeName = "NpgsqlDbType.@(column.PropertyType.NpgsqlDbTypeName)",
-                            @:NpgsqlDbType = NpgsqlDbType.@(column.PropertyType.NpgsqlDbTypeName),
+                            @:NpgsqlDbTypeName = "@(column.PropertyType.NpgsqlDbTypeName)",
+                            @:NpgsqlDbType = @(column.PropertyType.NpgsqlDbTypeName),
                         @:}
                     @:},
                     }
@@ -193,8 +193,8 @@ namespace @Model.Namespace
                     @:IsClrReferenceType = bool.Parse("@(function.FunctionReturnType.IsClrReferenceType)"),
                     @:Linq2DbDataTypeName = "@(function.FunctionReturnType.Linq2DbDataTypeName)",
                     @:Linq2DbDataType = @(function.FunctionReturnType.Linq2DbDataTypeName),
-                    @:NpgsqlDbTypeName = "NpgsqlDbType.@(function.FunctionReturnType.NpgsqlDbTypeName)",
-                    @:NpgsqlDbType = NpgsqlDbType.@(function.FunctionReturnType.NpgsqlDbTypeName),
+                    @:NpgsqlDbTypeName = "@(function.FunctionReturnType.NpgsqlDbTypeName)",
+                    @:NpgsqlDbType = @(function.FunctionReturnType.NpgsqlDbTypeName),
                 @:},
                 @:FunctionArguments = new Dictionary<string, SimpleType>
                 @:{
@@ -215,8 +215,8 @@ namespace @Model.Namespace
                         @:IsClrReferenceType = bool.Parse("@(pair.Value.IsClrReferenceType)"),
                         @:Linq2DbDataTypeName = "@(pair.Value.Linq2DbDataTypeName)",
                         @:Linq2DbDataType = @(pair.Value.Linq2DbDataTypeName),
-                        @:NpgsqlDbTypeName = "NpgsqlDbType.@(pair.Value.NpgsqlDbTypeName)",
-                        @:NpgsqlDbType = NpgsqlDbType.@(pair.Value.NpgsqlDbTypeName),
+                        @:NpgsqlDbTypeName = "@(pair.Value.NpgsqlDbTypeName)",
+                        @:NpgsqlDbType = @(pair.Value.NpgsqlDbTypeName),
                     @:}},
                     }
                 @:},

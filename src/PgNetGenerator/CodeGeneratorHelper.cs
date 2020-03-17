@@ -283,5 +283,22 @@ namespace PgNetGenerator
 
             return string.Join(" | ", result.Select(x => $"{objType.Name}.{x.ToString()}"));
         }
+        
+        public static string GetNpgsqlDbTypeLiteral(this NpgsqlDbType obj)
+        {
+            if ((int)obj < 0)
+            {
+                obj -= NpgsqlDbType.Array;
+                return $"NpgsqlDbType.{obj.ToString()} | NpgsqlDbType.Array";
+            }
+            
+            if ((int)obj > 1000)
+            {
+                obj -= NpgsqlDbType.Range;
+                return $"NpgsqlDbType.{obj.ToString()} | NpgsqlDbType.Range";
+            }
+            
+            return $"NpgsqlDbType.{obj.ToString()}";
+        }
     }
 }

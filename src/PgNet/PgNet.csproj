@@ -5,9 +5,9 @@
         <LangVersion>latest</LangVersion>
         <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 
-        <Version>1.0.10</Version>
-        <VersionPrefix>1.0.10</VersionPrefix>
-        <PackageVersion>1.0.10</PackageVersion>
+        <Version>1.0.12</Version>
+        <VersionPrefix>1.0.12</VersionPrefix>
+        <PackageVersion>1.0.12</PackageVersion>
 
         <Title>.NET Core ORM specially designed to work with PostgreSQL</Title>
         <Description>.NET Core ORM specially designed to work with PostgreSQL</Description>
